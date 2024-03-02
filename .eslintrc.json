@@ -1,0 +1,71 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.js"],
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "plugins": ["@typescript-eslint"],
+            "rules": {
+                "quotes": ["error",
+                    "single"
+                ],
+                "no-multi-spaces": ["error"],
+                "no-trailing-spaces": "error",
+                "max-len": ["error", 120],
+                "no-console": "error",
+                "key-spacing": ["error", { "afterColon": true }],
+                "arrow-parens": ["error", "as-needed"],
+                "operator-linebreak": [
+                    "error",
+                    "after",
+                    {
+                        "overrides": {
+                            "?": "before",
+                            ":": "before",
+                            "&": "before",
+                            "&&": "before",
+                            "|": "before",
+                            "||": "before"
+                        }
+                    }
+                ],
+                "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+                "arrow-body-style": ["error", "as-needed"],
+                "prefer-arrow-callback": "error",
+                "array-callback-return": "error",
+                "arrow-spacing": "error",
+                "grouped-accessor-pairs": "error",
+                "curly": "error",
+                "no-template-curly-in-string": "error",
+                "no-dupe-args": "error",
+                "no-dupe-class-members": "error",
+                "no-dupe-keys": "error",
+                "sort-imports": [
+                    "error",
+                    {
+                        "ignoreCase": true,
+                        "allowSeparatedGroups": true
+                    }
+                ],
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["../../../*", "src/*"]
+                    }
+                ],
+                "object-shorthand": "error"
+            }
+        },
+        {
+            "files": ["*.html"],
+            "rules": {
+                "max-len": ["error", 120]
+            }
+        }
+    ]
+}
