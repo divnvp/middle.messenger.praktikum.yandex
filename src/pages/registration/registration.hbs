@@ -1,0 +1,24 @@
+<div class='row'>
+  {{#> Card }}
+    <form class="registration-page">
+      <div class="registration-page__content">
+        {{> PageTitle title="Регистрация" }}
+        {{> InputField className="registration-page__title" title="Почта" name="mail" }}
+        {{> InputField title="Логин" name="login" }}
+        {{> InputField title="Имя" name="name" }}
+        {{> InputField title="Фамилия" name="surname" }}
+        {{> InputField title="Телефон" name="phone" }}
+        {{> InputField title="Пароль" name="password" type="password" }}
+        {{> InputField title="Пароль еще раз" name="password-again" type="password-again" }}
+      </div>
+      <div class='registration-page__title'>
+        {{> Button text="Зарегистрироваться" page="chat" }}
+      </div>
+      <div>
+        {{> Link page="auth" text="Назад"}}
+      </div>
+    </form>
+  {{/ Card }}
+
+  <img src='../../../static/background.png' alt=''>
+</div>

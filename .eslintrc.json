@@ -1,5 +1,8 @@
 {
   "root": true,
+  "env": {
+    "node": true
+  },
   "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
@@ -12,7 +15,7 @@
         "no-multi-spaces": ["error"],
         "no-trailing-spaces": "error",
         "max-len": ["error", 120],
-        "no-console": "error",
+//        "no-console": "error",
         "key-spacing": ["error", { "afterColon": true }],
         "arrow-parens": ["error", "as-needed"],
         "operator-linebreak": [

@@ -1,0 +1,18 @@
+<div class="profile-page">
+  {{> Menu }}
+
+  <div class='profile-page__content'>
+    <img class='profile-page__avatar' src=''>
+    <div class='profile-page__fields'>
+      {{> InputField title="Почта" name="mail" }}
+      {{> InputField title="Логин" name="login" }}
+      {{> InputField title="Имя" name="name" }}
+      {{> InputField title="Фамилия" name="surname" }}
+      {{> InputField title="Телефон" name="phone" }}
+    </div>
+
+    <div class='profile-page__button'>
+      {{> Button text="Сохранить" page="profile"}}
+    </div>
+  </div>
+</div>

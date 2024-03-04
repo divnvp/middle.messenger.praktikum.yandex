@@ -1,0 +1,8 @@
+@import '../../../static/variables';
+
+.input-field {
+  &__title {
+    font: $font-small;
+    color: $text-light-color;
+  }
+}

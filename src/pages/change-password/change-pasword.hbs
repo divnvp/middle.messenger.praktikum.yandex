@@ -1,0 +1,16 @@
+<div class="profile-page">
+  {{> Menu }}
+
+  <div class='profile-page__content'>
+    <img class='profile-page__avatar' src=''>
+    <div class='profile-page__fields'>
+      {{> InputField title="Старый пароль" name="old-password" }}
+      {{> InputField title="Новый пароль" name="new-password" }}
+      {{> InputField title="Повторите пароль" name="password-again" }}
+    </div>
+
+    <div class='profile-page__button'>
+      {{> Button text="Сохранить" page="profile"}}
+    </div>
+  </div>
+</div>

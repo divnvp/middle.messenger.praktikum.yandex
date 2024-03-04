@@ -1,0 +1,25 @@
+@import '../../../static/variables';
+
+.button-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &__button {
+    width: 100%;
+    text-align: center;
+    border-radius: 21px;
+    font: $font-small;
+    background-color: $text-bgcolor;
+    color: $border-color;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 30px;
+    height: 30px;
+  }
+}

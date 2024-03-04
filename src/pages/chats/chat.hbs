@@ -1,0 +1,9 @@
+<div class="chat-page">
+  {{> Menu }}
+  {{#> ChatList }}
+    {{#each (chat-page-list)}}
+      {{> ChatItem }}
+    {{/each}}
+  {{/ ChatList }}
+  {{> Link page="AuthPage" text="К логину"}}
+</div>
