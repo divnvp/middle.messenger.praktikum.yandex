@@ -1,12 +1,8 @@
-import * as Components from './components/index';
-import * as Pages from './pages';
+import * as Components from './components/index.ts';
+import * as Pages from './pages/index.ts';
 import Handlebars from 'handlebars';
 
-interface IPage {
-  [key: string]: unknown[];
-}
-
-const pages: IPage = {
+const pages = {
   chat: [Pages.ChatPage],
   auth: [Pages.AuthPage],
   registration: [Pages.RegistrationPage],
@@ -19,16 +15,16 @@ Object.entries(Components).forEach(([name, component]) => {
   Handlebars.registerPartial(name, component);
 });
 
-function navigate(page: string) {
-  const [source, args] = pages[page];
-  const handlebarsFunct = Handlebars.compile(source);
-  document.body.innerHTML = handlebarsFunct(args);
+function navigate(page) {
+  const [name, args] = pages[page];
+  const handlebarsCompile = Handlebars.compile(name);
+  document.body.innerHTML = handlebarsCompile(args);
 }
 
 document.addEventListener('DOMContentLoaded', () => navigate('auth'));
 
 document.addEventListener('click', e => {
-  const page = e.target?.getAttribute('page');
+  const page = e.target.getAttribute('page');
   if (page) {
     navigate(page);
 

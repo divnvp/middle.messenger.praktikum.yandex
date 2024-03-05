@@ -3,15 +3,16 @@ import eslintPlugin from 'vite-plugin-eslint';
 import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
+  base: '/',
   plugins: [handlebars(), eslintPlugin()],
   build: {
     rollupOptions: {
       input: {
-        app: './static/index.html'
+        app: './src/index.html'
       }
     }
   },
   server: {
-    open: './static/index.html'
+    open: './src/index.html'
   }
 });
