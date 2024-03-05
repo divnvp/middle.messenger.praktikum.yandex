@@ -4,9 +4,9 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join('index.html')));
 app.get('/*', (req, res) => {
-  res.sendFile(__dirname +"/");
+  res.sendFile(__dirname +"/dist/static/index.html");
 });
 
 app.listen(PORT, () => console.log(`Server http://localhost:${PORT}`));

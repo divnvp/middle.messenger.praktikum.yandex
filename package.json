@@ -15,7 +15,8 @@
     }
   },
   "scripts": {
-    "dev": "node src/server.cjs",
+    "dev": "npm run build & node server.cjs",
+    "dev:vite": "vite --port 3000 --host",
     "build": "vite build",
     "start": "npm run build",
     "preview": "vite preview"
@@ -33,7 +34,6 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
-    "express": "^4.18.3",
-    "vite-plugin-handlebars": "^2.0.0"
+    "express": "^4.18.3"
   }
 }

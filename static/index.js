@@ -1,5 +1,5 @@
-import * as Components from './components/index.ts';
-import * as Pages from './pages/index.ts';
+import * as Components from '../src/components/index.ts';
+import * as Pages from '../src/pages/index.ts';
 import Handlebars from 'handlebars';
 
 const pages = {
