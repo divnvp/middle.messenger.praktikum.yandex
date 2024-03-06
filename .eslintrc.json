@@ -25,12 +25,12 @@
           "after",
           {
             "overrides": {
-              "?": "before",
-              ":": "before",
-              "&": "before",
-              "&&": "before",
-              "|": "before",
-              "||": "before"
+              "?": "after",
+              ":": "after",
+              "&": "after",
+              "&&": "after",
+              "|": "after",
+              "||": "after"
             }
           }
         ],
