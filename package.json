@@ -14,7 +14,6 @@
       "includeNodeModules": true
     }
   },
-  "main": "index.js",
   "scripts": {
     "dev": "tsc & vite --port 3000 --host",
     "build": "vite build",

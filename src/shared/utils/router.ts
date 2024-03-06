@@ -6,7 +6,7 @@ function navigate(page: string) {
 
   const handlebarsCompile = Handlebars.compile(name);
   document.body.innerHTML = handlebarsCompile(args);
-  history.pushState(page, '', page);
+  // history.pushState('', '', page);
 }
 
 export function onClick() {
