@@ -1,6 +1,6 @@
 'use strict';
 
-import * as Components from '../src/components/index.js';
+import * as Components from '../src/components';
 import { onClick, onContentLoaded } from '../src/shared/utils/router';
 import Handlebars from 'handlebars';
 
