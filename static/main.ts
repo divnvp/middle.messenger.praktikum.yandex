@@ -5,7 +5,7 @@ import { onClick, onContentLoaded } from '../src/shared/utils/router';
 import Handlebars from 'handlebars';
 
 Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
+    Handlebars.registerPartial(name, component);
 });
 
 onContentLoaded();
