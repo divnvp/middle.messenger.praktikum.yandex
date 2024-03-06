@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "workspaces": [
     "packages/*"
@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "tsc & vite --port 3000 --host",
     "build": "vite build",
-    "start": "npm run build & node server.cjs",
+    "start": "npm run build & node server.cjs & vite preview --port 3000",
     "preview": "vite preview"
   },
   "devDependencies": {
