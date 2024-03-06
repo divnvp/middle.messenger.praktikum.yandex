@@ -4,7 +4,11 @@
     "node": true,
     "browser": true
   },
-  "ignorePatterns": ["projects/**/*"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["./.eslintignore"],
   "overrides": [
     {
       "files": ["*.ts", "*.js"],
@@ -17,7 +21,6 @@
         "no-multi-spaces": ["error"],
         "no-trailing-spaces": "error",
         "max-len": ["error", 120],
-//        "no-console": "error",
         "key-spacing": ["error", { "afterColon": true }],
         "arrow-parens": ["error", "as-needed"],
         "operator-linebreak": [

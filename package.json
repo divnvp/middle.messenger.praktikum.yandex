@@ -10,21 +10,23 @@
     "dev": "tsc & vite --port 3000 --host",
     "build": "vite build",
     "start": "npm run build & node server.cjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint \"**/*.{ts,tsx, css,scss}\" --fix"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
     "eslint": "^8.57.0",
-    "handlebars": "^4.7.8",
     "prettier": "3.2.5",
     "sass": "^1.71.1",
+    "stylelint": "^16.2.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "handlebars": "^4.7.8"
   }
 }
