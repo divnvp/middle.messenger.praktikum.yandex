@@ -18,6 +18,10 @@
 
 Запустить проект на localhost: `npm run dev`
 
+## Ссылка на приложение
+
+Netlify: https://soft-daffodil-147528.netlify.app/
+
 ## Примеры использования
 
 ### Gitflow
