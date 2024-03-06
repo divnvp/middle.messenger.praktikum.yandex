@@ -14,11 +14,11 @@
       "includeNodeModules": true
     }
   },
+  "main": "index.js",
   "scripts": {
-    "dev": "npm run build & node server.cjs",
-    "dev:vite": "vite --port 3000 --host",
+    "dev": "vite --port 3000 --host",
     "build": "vite build",
-    "start": "npm run build",
+    "start": "npm run build & node server.cjs",
     "preview": "vite preview"
   },
   "devDependencies": {

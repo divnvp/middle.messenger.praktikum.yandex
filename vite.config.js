@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig({
-  base: '/',
   plugins: [eslintPlugin()],
   build: {
     rollupOptions: {
@@ -13,5 +12,8 @@ export default defineConfig({
   },
   server: {
     open: './static/index.html'
+  },
+  css: {
+    devSourcemap: true
   }
 });

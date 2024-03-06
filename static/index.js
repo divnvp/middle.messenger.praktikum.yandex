@@ -1,5 +1,7 @@
-import * as Components from '../src/components/index.ts';
-import * as Pages from '../src/pages/index.ts';
+'use strict';
+
+import * as Components from '../src/components/index.js';
+import * as Pages from '../src/pages/index.js';
 import Handlebars from 'handlebars';
 
 const pages = {
@@ -32,3 +34,5 @@ document.addEventListener('click', e => {
     e.stopImmediatePropagation();
   }
 });
+// console.log(5);
+// export const a = 5;
