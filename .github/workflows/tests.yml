@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install && node server.csj
+      - run: npm install && node server.cjs
       - name: Сheck if the repository is private
         if: ${{github.event.repository.private}}
         run: exit 1
