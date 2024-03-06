@@ -1,5 +1,7 @@
 import './chat.scss';
 import Handlebars from 'handlebars';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 export { default as ChatPage } from './chat.hbs?raw';
 
 Handlebars.registerHelper('chat-page-list', () => [

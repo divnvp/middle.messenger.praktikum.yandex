@@ -1,8 +1,9 @@
-import * as storage from './storage.js';
+import * as storage from './storage';
 import Handlebars from 'handlebars';
-import { pages } from '../consts/pages.js';
+import { IPage } from '../models/page.interface';
+import { pages } from '../consts/pages';
 
-function navigate(pages, page) {
+function navigate(pages: IPage, page: string) {
   const [name, args] = pages[page];
 
   const handlebarsCompile = Handlebars.compile(name);
@@ -11,9 +12,9 @@ function navigate(pages, page) {
 }
 
 export function onClick() {
-  document.addEventListener('click', e => {
+  document.addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
-    const page = e.target.getAttribute('page');
+    const page = (e.target as Element)?.getAttribute('page');
     if (page) {
       navigate(pages, page);
       storage.setLocalStorageItem('page', page);

@@ -1,6 +1,7 @@
-import * as Pages from '../../pages/index.js';
+import * as Pages from '../../pages';
+import { IPage } from '../models/page.interface';
 
-export const pages = {
+export const pages: IPage = {
   chat: [Pages.ChatPage],
   auth: [Pages.AuthPage],
   registration: [Pages.RegistrationPage],
