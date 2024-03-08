@@ -1,25 +1,25 @@
-<div class="chat-item">
-  <div class="chat-item__line"></div>
-  <div class="chat-item__block{{#if current}} chat-item__block--current{{/if}}">
+<div class='chat-item'>
+  <div class='chat-item__line'></div>
+  <div class='chat-item__block{{#if current}} chat-item__block--current{{/if}}'>
     {{#if avatar}}
     <div class='chat-item__avatar'>
-      <img class="avatar" src={{ avatar }}><img>
+      <img class='avatar' src={{ avatar }} alt='Avatar'>
     </div>
     {{else }}
       <div class='chat-item__avatar'>
-        <div class="avatar"></div>
+        <div class='avatar'></div>
       </div>
     {{/if}}
     <div class='col chat-item__message'>
-      <div class="chat-item__message"><span class="chat-item__message-name">{{ name }}</span></div>
-      <div class="chat-item__message"><span class="chat-item__message-text">{{ message }}</span></div>
+      <div class='chat-item__message'><span class='chat-item__message-name'>{{ name }}</span></div>
+      <div class='chat-item__message'><span class='chat-item__message-text'>{{ message }}</span></div>
     </div>
 
     <div class='col'>
-      <div class="chat-item__time"><span class=''>10:00</span></div>
+      <div class='chat-item__time'><span class=''>10:00</span></div>
       {{#if unread}}
         <div class='full-width flex-end'>
-          <div class="chat-item__unread"><span class=''>{{ unread }}</span></div>
+          <div class='chat-item__unread'><span class=''>{{ unread }}</span></div>
         </div>
       {{/if}}
     </div>

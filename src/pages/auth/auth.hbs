@@ -1,17 +1,17 @@
 <div class='row'>
   {{#> Card }}
-    <form class="auth-page">
-      <div class="auth-page__content">
-        {{> PageTitle title="Добро пожаловать!" }}
-        {{> Text text="Пожалуйста, введите ваши данные" }}
-        {{> InputField className="auth-page__input" title="Логин" name="login" icon="./icons/mail-icon.png" }}
-        {{> InputField title="Пароль" name="password" type="password" icon="./icons/eye-icon.png" }}
+    <form class='auth-page'>
+      <div class='auth-page__content'>
+        {{> PageTitle title='Добро пожаловать!' }}
+        {{> Text text='Пожалуйста, введите ваши данные' }}
+        {{> InputField className='auth-page__input' title='Логин' name='login' icon='./icons/mail-icon.png' }}
+        {{> InputField title='Пароль' name='password' type='password' icon='./icons/eye-icon.png' }}
       </div>
-      <div class="auth-page__input">
-        {{> Button text="Войти" page="chat" }}
+      <div class='auth-page__input'>
+        {{> Button text='Войти' page='chat' }}
       </div>
       <div class='auth-page__registration'>
-        {{> Link page="registration" text="Зарегистрироваться"}}
+        {{> Link page='registration' text='Зарегистрироваться'}}
       </div>
     </form>
   {{/ Card }}
