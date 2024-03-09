@@ -1,0 +1,53 @@
+$font-body: Inter, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-sans;
+
+$background-color: white;
+
+$font-weight-light: 300;
+$font-weight-medium: 400;
+$font-weight-regular: 500;
+$font-weight-semibold: 600;
+
+$font-large: #{$font-weight-regular} 40px/40px #{$font-body};
+$font-title: #{$font-weight-semibold} 20px/20px #{$font-body};
+$font-regular: #{$font-weight-regular} 13px/13px #{$font-body};
+$font-small: #{$font-weight-medium} 12px/12px #{$font-body};
+$font-micro: #{$font-weight-light} 10px/10px #{$font-body};
+$font-nano: #{$font-weight-regular} 9px/9px #{$font-body};
+
+$text-bgcolor: #ffffff;
+$text-color: #000;
+$text-light-color: #999999;
+$text-red: #ff0000;
+
+$border-color: #999999;
+
+$link-color: #3c0000;
+$title-color: #1e1e1e;
+
+$button-color: #fff;
+$button-bgcolor: #b24000;
+
+$menu-button-color: #{$button-bgcolor};
+$menu-button-bgcolor: #f5f5f5;
+
+$menu-font: #{$font-weight-regular} 12px/14px #{$font-body};
+$menu-bgcolor: #{$text-bgcolor};
+$menu-shadow: 0px 0px 6px #00000024;
+
+$divider-line-color: #eaeaea;
+
+$chat-list-bgcolor: #ffffff;
+$chat-list-current-bgcolor: #e4edfd;
+
+$chat-message-font: #{$font-weight-regular} 12px/15px #{$font-body};
+$chat-message-bgcolor: #f8f8f8;
+$chat-message-color: #1e1e1e;
+$chat-message-inverse-color: #fff;
+$chat-message-inverse-bgcolor: #52525280;
+$chat-message-my-bgcolor: #e4edfd;
+$chat-message-my-color: #{$chat-message-color};
+$chat-message-my-time-color: #{$button-bgcolor};
+
+$card-bgcolor: #ffffff;
+
+$gray-light-color: #efefef;

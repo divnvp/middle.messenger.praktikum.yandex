@@ -1,0 +1,10 @@
+@import '../../shared/variables';
+@import "../../../static/index";
+
+.chat-page {
+  height: 100%;
+  width: 100%;
+  margin: 2rem;
+  padding-top: 2rem;
+  display: flex;
+}

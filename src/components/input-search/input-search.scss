@@ -1,0 +1,30 @@
+@import '@/shared/variables';
+
+.input-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+
+    margin-left: 10px;
+    position: absolute;
+  }
+
+  &__input {
+    padding: 10px 20px 10px 30px;
+
+    border: none;
+    background-color: $gray-light-color;
+
+    width: 100%;
+
+    border-radius: 30px;
+
+    &:focus {
+      border: none;
+    }
+  }
+}
