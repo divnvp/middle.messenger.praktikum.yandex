@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsc & vite --port 3000 --host",
     "build": "vite build",
-    "start": "npm i & npm run build & node server.cjs",
+    "start": "tsc & npm i & npm run build & node server.cjs",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix"
   },
