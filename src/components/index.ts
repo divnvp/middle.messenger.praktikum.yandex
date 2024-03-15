@@ -14,4 +14,3 @@ export { ChatMessage } from './chat-message/chat-message';
 export { ChatMessageHeader } from './chat-message-header/chat-message-header';
 export { ChatMessageFooter } from './chat-message-footer/chat-message-footer';
 export { MessageItem } from './message-item/message-item';
-export { Message } from './message/message';
