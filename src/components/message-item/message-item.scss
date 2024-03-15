@@ -1,0 +1,37 @@
+@import '@/shared/variables';
+@import '../../../static/index';
+
+.message-item {
+  display: flex;
+  flex-direction: row;
+
+  &_in {
+    width: auto;
+    max-width: 50%;
+
+    background-color: $chat-list-bgcolor;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    font: $font-small;
+
+    &__time {
+      margin-top: 1rem;
+
+      font: $font-nano;
+      color: $text-light-color;
+      text-align: end;
+    }
+  }
+
+  &_out {
+    width: auto;
+    max-width: 50%;
+
+    background-color: $chat-list-bgcolor;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    font: $font-small;
+  }
+}

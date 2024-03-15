@@ -10,3 +10,8 @@ export { Text } from './text/text';
 export { Menu } from './menu/menu';
 export { ButtonIcon } from './button-icon/button-icon';
 export { InputSearch } from './input-search/input-search';
+export { ChatMessage } from './chat-message/chat-message';
+export { ChatMessageHeader } from './chat-message-header/chat-message-header';
+export { ChatMessageFooter } from './chat-message-footer/chat-message-footer';
+export { MessageItem } from './message-item/message-item';
+export { Message } from './message/message';

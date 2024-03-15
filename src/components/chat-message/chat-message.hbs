@@ -1,0 +1,17 @@
+<div class='chat-message'>
+  <div class='chat-message__header'>
+    {{> ChatMessageHeader}}
+  </div>
+
+  <div class='chat-message__main'>
+    <div class="chat-message__main_bottom">
+      {{#each (messages-list) }}
+        {{> MessageItem }}
+      {{/each }}
+    </div>
+  </div>
+
+  <div class='chat-message__footer'>
+    {{> ChatMessageFooter}}
+  </div>
+</div>

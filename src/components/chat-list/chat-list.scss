@@ -2,7 +2,8 @@
 
 .chat-list {
   background: $chat-list-bgcolor;
-  height: 100%;
   width: 30%;
   overflow: auto;
+
+  padding: 2rem 2rem 0 0;
 }

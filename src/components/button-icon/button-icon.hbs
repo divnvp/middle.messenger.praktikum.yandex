@@ -1,6 +1,13 @@
 <div class='button-icon'>
-  <img class='button-icon__img' src='{{icon}}' page='{{page}}' alt='Button icon image' />
-  <button class='button-icon__button' page='{{page}}'>
-    {{text}}
-  </button>
+  {{#if color}}
+    <button class='button-icon__button-color' page='{{page}}'>
+      <img class='button-icon__img' src='{{icon}}' page='{{page}}' alt='Button icon image' />
+    </button>
+  {{/if}}
+  {{#if text}}
+    <img class='button-icon__img' src='{{icon}}' page='{{page}}' alt='Button icon image' />
+    <button class='button-icon__button' page='{{page}}'>
+      {{text}}
+    </button>
+  {{/if}}
 </div>

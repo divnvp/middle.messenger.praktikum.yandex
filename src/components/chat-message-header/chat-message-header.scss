@@ -1,0 +1,34 @@
+@import '@/shared/variables';
+@import '../../../static/index';
+
+.chat-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  background-color: $chat-message-bgcolor;
+
+  &__user-info {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__avatar {
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+
+    background-color: $gray-light-color;
+  }
+
+  &__name {
+    margin-left: 25px;
+  }
+
+  &__menu-icon {
+    width: 34px;
+    height: 34px;
+  }
+}

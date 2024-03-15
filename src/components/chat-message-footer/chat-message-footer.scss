@@ -1,0 +1,31 @@
+@import '@/shared/variables';
+@import '../../../static/index';
+
+.chat-message-footer {
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 1rem 1rem 2rem;
+
+  background-color: $chat-message-bgcolor;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__message {
+    border-color: transparent;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+
+    &-label {
+      width: 90%;
+    }
+  }
+
+  &__button {
+    margin-left: 3rem;
+  }
+}
