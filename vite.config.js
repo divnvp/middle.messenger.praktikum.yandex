@@ -4,15 +4,16 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [eslintPlugin()],
-
-  server: {
-    open: './index.html'
-  },
-  css: {
-    devSourcemap: true
-  },
+  root: './src',
   build: {
-    outDir: 'dist'
+    outDir: resolve(__dirname, 'dist'),
+    rollupOptions: {
+      input: {
+        index: '/index.html',
+        auth: '/pages/auth/auth.html',
+        registration: '/pages/registration/registration.html'
+      }
+    }
   },
   resolve: {
     alias: [
