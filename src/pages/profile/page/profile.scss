@@ -1,0 +1,42 @@
+@import '@/shared/variables';
+
+.profile-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+    &__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__avatar {
+      background: $gray-light-color;
+      height: 190px;
+      width: 190px;
+      border-radius: 50%;
+      margin-bottom: 3rem;
+    }
+
+    &__fields {
+      width: 280px;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__button {
+      width: 280px;
+    }
+}
+
+.chat-list {
+  background: $chat-list-bgcolor;
+  width: 30%;
+  overflow: auto;
+
+  padding: 2rem 2rem 0 0;
+}
