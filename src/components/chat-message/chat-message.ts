@@ -1,26 +1,52 @@
 import './chat-message.scss';
-import Handlebars from 'handlebars';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-export { default as ChatMessage } from './chat-message.hbs?raw';
 
-Handlebars.registerHelper('messages-list', () => [
-  {
-    message:
-      'Привет! Смотри, тут всплыл интересный кусок лунной космической ' +
-      'истории — НАСА в какой-то момент попросила Хассельблад адаптировать ' +
-      'модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты ' +
-      'летали с моделью 500 EL — и к слову говоря, все тушки этих камер все ' +
-      'еще находятся на поверхности Луны, так как астронавты с собой забрали ' +
-      'только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, ' +
-      'но что-то пошло не так и на ракету они так никогда и не попали. ' +
-      'Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.',
-    time: '11:56',
-    in: true
-  },
-  {
-    message: 'Круто!',
-    time: '12:00',
-    in: false
-  }
-]);
+const chatMessageTemplate = `
+<!--<div class='chat-message'>-->
+  <div class='chat-message__header'>
+    <div class='chat-message-header'>
+    <div class='chat-message-header__user-info'>
+      <div class='chat-message-header__avatar'></div>
+      <h1 class='chat-message-header__name'>Вадим</h1>
+    </div>
+  
+    <img
+      class='chat-message-header__menu-icon'
+      src='../../icons/pencil-dots-y-icon.png'
+      alt='pencil-dots-y-icon'
+    />
+  </div>
+  </div>
+
+  <div class='chat-message__main'>
+    <div class="chat-message__main_bottom">
+      {{{ messageItem }}}
+    </div>
+  </div>
+
+  <div class='chat-message__footer'>
+    <div class='chat-message-footer'>
+    <img
+      class='chat-message-footer__icon'
+      src='../../icons/paper-clip-icon.png'
+      alt='paper-clip-icon.png'
+    />
+  
+    <label class="chat-message-footer__message-label">
+      <input
+        class='chat-message-footer__message'
+        type='text'
+        autocomplete='on'
+        name='message'
+        placeholder="Сообщение"
+      />
+    </label>
+  
+    <div class='chat-message-footer__button'>
+      {{{ button }}}
+    </div>
+  </div>
+  </div>
+<!--</div>-->
+`;
+
+export default chatMessageTemplate;
