@@ -8,7 +8,7 @@ import { Title } from '@/components/title';
 import { v4 as uuid } from 'uuid';
 
 const authPage = new AuthPage('div', {
-  title: new Title('div', { title: 'Добро пожаловать!' }),
+  title: new Title('div', { attr: { class: 'page-title' }, title: 'Добро пожаловать!' }),
   text: new Text('div', { text: 'Пожалуйста, введите ваши данные' }),
   fields: [
     new InputWithIconField('div', {
@@ -26,7 +26,10 @@ const authPage = new AuthPage('div', {
       icon: '../../icons/eye-icon.png'
     })
   ],
-  button: new Button('div', { text: 'Войти' }),
+  button: new Button('div', {
+    type: 'submit',
+    text: 'Войти'
+  }),
   link: new Link('a', {
     url: '/',
     text: 'Зарегистрироваться'
