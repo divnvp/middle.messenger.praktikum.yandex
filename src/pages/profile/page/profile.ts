@@ -16,7 +16,7 @@ const profilePage = new ProfilePage('div', {
   }),
   fields: [
     new InputField('div', {
-      name: 'mail',
+      name: 'email',
       title: 'Почта',
       id: uuid(),
       type: 'text'
