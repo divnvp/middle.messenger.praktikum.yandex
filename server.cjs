@@ -4,11 +4,11 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, './dist')));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.status(200)
-  res.send('Hello World!');
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
