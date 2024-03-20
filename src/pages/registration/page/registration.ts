@@ -7,8 +7,14 @@ import { Title } from '@/components/title';
 import { v4 as uuid } from 'uuid';
 
 const registrationPage = new RegistrationPage('div', {
-  title: new Title('div', { title: 'Регистрация' }),
+  title: new Title('div', { attr: { class: 'page-title' }, title: 'Регистрация' }),
   fields: [
+    new InputField('div', {
+      name: 'email',
+      title: 'Почта',
+      id: uuid(),
+      type: 'email'
+    }),
     new InputField('div', {
       name: 'login',
       title: 'Логин',
@@ -40,12 +46,13 @@ const registrationPage = new RegistrationPage('div', {
       type: 'password'
     }),
     new InputField('div', {
+      name: 'password_again',
       title: 'Пароль еще раз',
       id: uuid(),
       type: 'password'
     })
   ],
-  button: new Button('div', { text: 'Зарегистрироваться' }),
+  button: new Button('div', { type: 'submit', text: 'Зарегистрироваться' }),
   link: new Link('a', {
     url: '/',
     text: 'Назад'
