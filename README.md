@@ -16,6 +16,8 @@
 
 Запустить проект на localhost: `npm run start`
 
+Проверить качество кода: `npm run lint`
+
 ## Ссылки:
 
 ### На веб-приложение:
@@ -24,16 +26,30 @@ Netlify: https://soft-daffodil-147528.netlify.app/
 
 ### На сверстанные макеты:
 
-Страница авторизации: http://localhost:3000/auth
-Страница регистрации: http://localhost:3000/registration
-Страница чатов: http://localhost:3000/chat
+Страница авторизации: http://localhost:3000/pages/auth/auth.html
+
+Страница регистрации: http://localhost:3000/pages/registration/registration.html
+
+Страница чатов: http://localhost:3000/pages/chats/chat.html
+
 Страница профиля: http://localhost:3000/profile
-Страница смены пароля: http://localhost:3000/change-password
-Страница смены данных: http://localhost:3000/profile-data
-Страница 500: http://localhost:3000/error-500
-Страница 404: http://localhost:3000/error-4xx
+
+Страница смены пароля: http://localhost:3000/pages/change-password/change-password.html
+
+Страница смены данных: http://localhost:3000/pages/profile-data/profile-data.html
+
+Страница 500: http://localhost:3000/pages/error-500/error-500.html
+
+Страница 404: http://localhost:3000/pages/error-4xx/error-4xx.html
 
 ## Примеры использования
+
+В новой версии приложения теперь:
+- можно валидировать поля при нажатии кнопки сохранения или отправке сообщения
+- код разбит на компоненты и страницы, наследующие Block
+- используется EventBus для отслеживания жизненного цикла компонента
+- внедрен класс HTTPTransport для реализации API
+- появился блок с сообщениями
 
 ### Gitflow
 
@@ -54,4 +70,8 @@ Netlify: https://soft-daffodil-147528.netlify.app/
 ## Ссылка на pull-request Спринт 1
 
 https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/4
+
+## Ссылка на pull-request Спринт 2
+
+https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/5
 
