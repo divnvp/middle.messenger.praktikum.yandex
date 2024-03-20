@@ -3,11 +3,17 @@ import { INPUT_NAMES } from '@/shared/const/input-names';
 export let errorMessage = '';
 
 export function isValueValid(name: string, value: string) {
+  const isPassword =
+    name === INPUT_NAMES.Password ||
+    name === INPUT_NAMES.PasswordAgain ||
+    name === INPUT_NAMES.OldPassword ||
+    name === INPUT_NAMES.NewPassword;
+
   if (name === INPUT_NAMES.Login) {
     return checkLogin(value);
   }
 
-  if (name === INPUT_NAMES.Password || name === INPUT_NAMES.PasswordAgain) {
+  if (isPassword) {
     return checkPassword(value);
   }
 

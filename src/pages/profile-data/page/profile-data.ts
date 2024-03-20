@@ -48,7 +48,11 @@ const profilePage = new ProfileDataPage('div', {
     })
   ],
   link: new Link('div', { url: '/', text: 'Назад' }),
-  button: new Button('div', { attr: { class: 'profile-page__button' }, text: 'Сохранить' })
+  button: new Button('div', {
+    attr: { class: 'profile-page__button' },
+    type: 'submit',
+    text: 'Сохранить'
+  })
 });
 
 render('#app', profilePage);

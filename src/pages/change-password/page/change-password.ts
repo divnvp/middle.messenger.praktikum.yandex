@@ -17,26 +17,30 @@ const changePasswordPage = new ChangePasswordPage('div', {
   }),
   fields: [
     new InputField('div', {
-      name: 'oldPassword',
+      name: 'old_password',
       title: 'Старый пароль',
       id: uuid(),
-      type: 'text'
+      type: 'password'
     }),
     new InputField('div', {
-      name: 'newPassword',
+      name: 'new_password',
       title: 'Новый пароль',
       id: uuid(),
-      type: 'text'
+      type: 'password'
     }),
     new InputField('div', {
-      name: 'passwordAgain',
+      name: 'password_again',
       title: 'Повторите пароль',
       id: uuid(),
-      type: 'text'
+      type: 'password'
     })
   ],
   link: new Link('div', { url: '/', text: 'Назад' }),
-  button: new Button('div', { attr: { class: 'profile-page__button' }, text: 'Сохранить' })
+  button: new Button('div', {
+    attr: { class: 'profile-page__button' },
+    type: 'submit',
+    text: 'Сохранить'
+  })
 });
 
 render('#app', changePasswordPage);
