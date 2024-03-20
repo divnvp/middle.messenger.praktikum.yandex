@@ -56,7 +56,8 @@ const chatPage = new ChatPage('div', {
       })
     ],
     button: new ButtonWithIcon('div', {
-      icon: '../../arrow-right-icon.png'
+      type: 'submit',
+      icon: '../../icons/arrow-right-icon.png'
     })
   })
 });

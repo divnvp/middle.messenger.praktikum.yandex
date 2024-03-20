@@ -90,6 +90,11 @@
     &-label {
       width: 90%;
     }
+
+    &-form {
+      width: 100%;
+      display: flex;
+    }
   }
 
   &__button {
