@@ -1,7 +1,7 @@
 import './button.scss';
 
 const buttonTemplate = `
-<button class='button''>
+<button class='button' type="{{type}}" onclick="{{onclick}}">
   {{ text }}
 </button>
 `;
