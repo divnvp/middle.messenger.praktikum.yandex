@@ -7,7 +7,7 @@ export function isValueValid(name: string, value: string) {
     return checkLogin(value);
   }
 
-  if (name === INPUT_NAMES.Password) {
+  if (name === INPUT_NAMES.Password || name === INPUT_NAMES.PasswordAgain) {
     return checkPassword(value);
   }
 
@@ -32,38 +32,35 @@ export function isValueValid(name: string, value: string) {
 
 function checkName(value: string) {
   errorMessage =
-    'Введите верное имя (латиница или кириллица, первая буква заглавная, без пробелов и цифр, нет спецсимволов)';
+    'Неверное имя: первая буква должна быть заглавной, без пробелов, допустим символ "-"';
   return /^[A-ZЁА-Я][a-zA-ZЁA-Яёа-я-]+$/.test(value);
 }
 
 function checkLogin(value: string) {
   errorMessage =
-    'Введите верный логин (от 3 до 20 символов, латиница, может содержать цифры, без пробелов, без спецсимволов)';
-  return /^(?=.*[A-Za-z])[A-Za-z0-9-_]{3,20}$/.test(value);
+    'Неверный логин: не менее 3-х и не более 20-ти символов, латиница, допустимы символы "-" и "_"';
+  return /^[A-Za-z][A-Za-z0-9_-]{2,19}$/.test(value);
 }
 
 function checkEmail(value: string) {
-  errorMessage =
-    'Введите верный email (латиница, может включать цифры и спецсимволы, должна быть «@» и точка после неё)';
-  const re =
-    // eslint-disable-next-line max-len
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  errorMessage = 'Неверный email: латиница, допустимы символы "-" и "_", должна быть «@»';
+  const re = /^[a-zA-Z0-9_.+-]+@[A-Za-z0-9]+([_.-][A-Za-z0-9]+)*\.[A-Za-z]{2,}$/;
   return re.test(value.toLowerCase());
 }
 
 function checkPassword(value: string) {
   errorMessage =
-    'Введите верный пароль (от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра)';
-  return /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/.test(value);
+    'Неверный пароль: от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра';
+  return /^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,40}$/.test(value);
 }
 
 function checkPhone(value: string) {
   errorMessage =
-    'Введите верный телефон (от 10 до 15 символов, состоит из цифр, может начинается с плюса)';
-  return /^9[0-9]{9}$/.test(value);
+    'Неверный телефон: от 10 до 15 символов, состоит из цифр, может начинается с плюса';
+  return /^(\+)?\d{10,15}$/.test(value);
 }
 
 function checkMessage(value: string) {
-  errorMessage = 'Сообщение не должно быть пустым';
-  return /^(?!\s*$).+$/.test(value);
+  errorMessage = 'Неверное сообщение: не должно быть пустым';
+  return /.+/.test(value);
 }

@@ -1,37 +1,56 @@
 import { errorMessage, isValueValid } from '@/shared/utils/validators/validators';
+import { getFormProps } from '@/shared/utils/form-props';
 
 export function onValidate(event: Event): void {
   event.preventDefault();
 
   const input = event.target as HTMLInputElement;
   const parent = input.parentElement;
-  const errorText = parent?.querySelector('.validation');
   const inputName = input.name;
   const inputValue = input.value;
 
-  if (inputValue?.length && !isValueValid(inputName, inputValue)) {
-    input.classList.add('error');
+  const child = document.createElement('p');
+
+  if (!isValueValid(inputName, inputValue)) {
+    child.classList.add('validation');
+    child.textContent = errorMessage;
+    const errorText = parent?.querySelector('.validation');
 
     if (!errorText) {
-      parent?.appendChild(getParagraph());
+      parent?.appendChild(child);
     }
   } else {
-    input.classList.remove('error');
-    console.log(parent, errorText);
-    if (errorText) {
-      parent?.removeChild(errorText);
+    if (parent?.querySelector('p')) {
+      parent?.removeChild(parent!.querySelector('p')!);
     }
-
-    // if (type === Types.Submit) {
-    //   getFormProps(event.target as HTMLFormElement);
-    // }
   }
 }
 
-function getParagraph() {
-  const child = document.createElement('p');
-  child.classList.add('validation');
-  child.textContent = errorMessage;
+export function onValidateSubmit(event: Event) {
+  event.preventDefault();
 
-  return child;
+  const form = event.target as HTMLFormElement;
+
+  form.querySelectorAll('input').forEach(input => {
+    isValueValid(input.name, input.value);
+
+    const child = document.createElement('p');
+    child.classList.add('validation');
+    child.textContent = errorMessage;
+
+    const parent = input.parentElement;
+    const errorText = parent?.querySelector('.validation');
+
+    if (!isValueValid(input.name, input.value)) {
+      if (!errorText) {
+        parent?.appendChild(child);
+      }
+    } else {
+      if (errorText) {
+        parent?.removeChild(errorText);
+      }
+    }
+  });
+
+  console.log(getFormProps(form));
 }
