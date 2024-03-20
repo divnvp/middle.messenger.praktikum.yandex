@@ -1,6 +1,7 @@
 export enum INPUT_NAMES {
   Login = 'login',
   Password = 'password',
+  PasswordAgain = 'password_again',
   Email = 'email',
   Phone = 'phone',
   FirstName = 'first_name',
