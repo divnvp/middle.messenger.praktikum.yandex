@@ -55,3 +55,6 @@ Netlify: https://soft-daffodil-147528.netlify.app/
 
 https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/4
 
+## Ссылка на pull-request Спринт 2
+
+https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/5
