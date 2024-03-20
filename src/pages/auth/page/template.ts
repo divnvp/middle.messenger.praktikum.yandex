@@ -1,9 +1,7 @@
-import './auth.scss';
-
 const authTemplate = `
-<main id="auth">
+<div>
   <div class='row'>
-    <form class='auth-page'>
+    <form class='auth-page' id="auth">
       <div class='auth-page__content'>
         {{{ title }}}
         {{{ text }}}
@@ -17,9 +15,8 @@ const authTemplate = `
       </div>
     </form>
 
-    <img src='../../background.png' alt='background'>
-  </div>
-</main>
+  <img src='../../background.png' alt='background'>
+</div>
 `;
 
 export default authTemplate;

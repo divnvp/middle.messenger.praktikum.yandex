@@ -1,5 +1,3 @@
-import './input-field.scss';
-
 const inputFieldTemplate = `
 <div class="container">
 <div class="did-floating-label-content">
