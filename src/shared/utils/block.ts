@@ -3,7 +3,7 @@ import Handlebars from 'handlebars';
 import { IElement } from '@/shared/models/element.interface';
 import { IMeta } from '@/shared/models/meta.interface';
 import { IProp } from '@/shared/models/prop.interface';
-//import { v4 as makeUUID } from 'uuid';
+import { v4 as makeUUID } from 'uuid';
 
 export class Block {
   private readonly EVENTS = {
@@ -17,7 +17,7 @@ export class Block {
   private readonly eventBus: () => EventBus;
 
   private htmlElement?: HTMLElement;
-  //private id = makeUUID();
+  protected id = makeUUID();
   private child: IProp = {};
   private array: IProp = {};
 
@@ -101,7 +101,7 @@ export class Block {
 
     this.initializeUniqueElements(propsAndStubs);
 
-    fragment.textContent = Handlebars.compile(template)(propsAndStubs);
+    fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     this.createChildComponents(fragment);
     this.createListComponent(fragment);

@@ -10,24 +10,24 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-class HTTPTransport {
-  get(url: string, options: OptionsWithoutMethod = {}) {
+export default class HTTPTransport {
+  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: Method.Get });
   }
 
-  post(url: string, options: OptionsWithoutMethod = {}) {
+  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: Method.Post });
   }
 
-  put(url: string, options: OptionsWithoutMethod = {}) {
+  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: Method.Put });
   }
 
-  delete(url: string, options: OptionsWithoutMethod = {}) {
+  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: Method.Delete });
   }
 
-  request(url: string, options: Options = { method: Method.Get }) {
+  request(url: string, options: Options = { method: Method.Get }): Promise<XMLHttpRequest> {
     const { method, headers, data } = options;
 
     return new Promise((resolve, reject) => {
@@ -61,6 +61,3 @@ class HTTPTransport {
     });
   }
 }
-
-// Строка будет убрана после того, как HTTPTransport будет где-либо использован
-console.log(HTTPTransport);
