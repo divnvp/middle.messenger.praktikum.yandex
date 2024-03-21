@@ -1,3 +1,4 @@
+import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
 import { ButtonWithIcon } from '@/components/button-icon';
 import { ChatItem } from '@/components/chat-item';
 import { ChatList } from '@/components/chat-list';
@@ -41,9 +42,16 @@ const chatPage = new ChatPage('div', {
       new Link('div', { url: '/', text: 'Назад' })
     ]
   }),
-  chatMessage: new ChatMessage('div', {
+  chatMessage: new ChatMessage('form', {
     attr: {
       class: 'chat-message'
+    },
+    events: {
+      submit: onValidateSubmit,
+      blur: {
+        event: onValidate,
+        querySelector: 'input'
+      }
     },
     messageItem: [
       new MessageItemIn('div', {
