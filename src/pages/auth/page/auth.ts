@@ -1,3 +1,4 @@
+import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
 import { AuthPage } from '@/pages/auth';
 import { Button } from '@/components/button';
 import { InputWithIconField } from '@/components/input-field-with-icon';
@@ -7,11 +8,17 @@ import { Text } from '@/components/text';
 import { Title } from '@/components/title';
 import { v4 as uuid } from 'uuid';
 
-const authPage = new AuthPage('div', {
+const authPage = new AuthPage('form', {
+  events: {
+    submit: onValidateSubmit
+  },
   title: new Title('div', { attr: { class: 'page-title' }, title: 'Добро пожаловать!' }),
   text: new Text('div', { text: 'Пожалуйста, введите ваши данные' }),
   fields: [
     new InputWithIconField('div', {
+      events: {
+        blur: { event: onValidate, querySelector: 'input' }
+      },
       name: 'login',
       title: 'Логин',
       id: uuid(),
@@ -19,6 +26,9 @@ const authPage = new AuthPage('div', {
       icon: '../../icons/mail-icon.png'
     }),
     new InputWithIconField('div', {
+      events: {
+        blur: { event: onValidate, querySelector: 'input' }
+      },
       name: 'password',
       title: 'Пароль',
       id: uuid(),

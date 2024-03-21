@@ -30,7 +30,7 @@ const chatMessageTemplate = `
       alt='paper-clip-icon.png'
     />
   
-  <form class="chat-message-footer__message-form" id="chat">
+  <div class="chat-message-footer__message-form" id="chat">
     <label class="chat-message-footer__message-label">
       <input
         class='chat-message-footer__message'
@@ -44,7 +44,7 @@ const chatMessageTemplate = `
     <div class='chat-message-footer__button'>
       {{{ button }}}
     </div>
-  </form>
+  </div>
     
   </div>
   </div>
