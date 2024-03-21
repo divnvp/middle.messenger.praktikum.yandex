@@ -1,4 +1,6 @@
-import './input-search.scss';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-export { default as InputSearch } from './input-search.hbs?raw';
+const inputSearchTemplate = `
+<img class='input-search__icon' src='../../icons/search-icon.png' alt='search'>
+<input class='input-search__input' placeholder='Поиск...'>
+`;
+
+export default inputSearchTemplate;
