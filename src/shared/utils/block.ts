@@ -3,6 +3,7 @@ import Handlebars from 'handlebars';
 import { IElement } from '@/shared/models/element.interface';
 import { IMeta } from '@/shared/models/meta.interface';
 import { IProp } from '@/shared/models/prop.interface';
+import { IPropEvent } from '@/shared/models/prop-event.interface';
 import { v4 as makeUUID } from 'uuid';
 
 export class Block {
@@ -61,21 +62,6 @@ export class Block {
 
   render() {}
 
-  addEvents() {
-    const { events = {} } = this.props;
-    Object.keys(events).forEach(eventName => {
-      this.htmlElement?.addEventListener(eventName, events[eventName]);
-    });
-  }
-
-  removeEvents() {
-    const { events = {} } = this.props;
-
-    Object.keys(events).forEach(eventName => {
-      this.htmlElement?.removeEventListener(eventName, events[eventName]);
-    });
-  }
-
   addAttributes() {
     const { attr } = this.props;
 
@@ -107,6 +93,39 @@ export class Block {
     this.createListComponent(fragment);
 
     return (fragment as unknown as IElement).content;
+  }
+
+  private addEvents() {
+    const { events = {} } = this.props;
+
+    Object.keys(events).forEach(eventName => {
+      if (typeof events[eventName] === 'object') {
+        // Если элемент, на который нужно навесить событие, лежит внутри других блоков вроде div и т.п.
+        // Тогда в events в значение события передаем объект, где querySelector - это имя элемента внутри htmlElement
+        this.htmlElement
+          ?.querySelector((events[eventName] as unknown as IPropEvent).querySelector)
+          ?.addEventListener(eventName, (events[eventName] as unknown as IPropEvent).event);
+      } else {
+        this.htmlElement?.addEventListener(
+          eventName,
+          (events as Record<string, EventListener>)[eventName]
+        );
+      }
+    });
+  }
+
+  private removeEvents() {
+    const { events = {} } = this.props;
+
+    Object.keys(events).forEach(eventName => {
+      if (typeof events[eventName] === 'object') {
+        this.htmlElement
+          ?.querySelector((events[eventName] as unknown as IPropEvent).querySelector)
+          ?.removeEventListener(eventName, (events[eventName] as unknown as IPropEvent).event);
+      } else {
+        this.htmlElement?.removeEventListener(eventName, events[eventName]);
+      }
+    });
   }
 
   private initializeUniqueElements(propsAndStubs: Record<string, unknown>) {
