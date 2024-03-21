@@ -4,11 +4,11 @@ const changePasswordTemplate = `
 
   <div class='profile-page__content'>
     <img class='profile-page__avatar' src='' alt="avatar">
-    <form class='profile-page__fields' id="change-password">
+    <div class='profile-page__fields' id="change-password">
       {{{ fields }}}
       {{{ button }}}
       {{{ link }}}
-    </form>
+    </div>
   </div>
 </div>
 `;
