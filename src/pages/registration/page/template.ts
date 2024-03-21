@@ -2,7 +2,7 @@ import './registration.scss';
 
 const registrationTemplate = `
 <div class='row' id="registration">
-  <form class='registration-page'>
+  <div class='registration-page'>
     <div class='registration-page__content'>
       {{{ title }}}
       {{{ fields }}}
@@ -11,7 +11,7 @@ const registrationTemplate = `
       {{{ button }}}
     </div>
     {{{ link }}}
-  </form>
+  </div>
   
   <img src='../../background.png' alt='background'>
 </div>
