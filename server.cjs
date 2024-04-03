@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
+const { fileURLToPath } = require("url");
 
 const app = express();
 const PORT = 3000;
 
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, './dist')));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.status(200)
   res.send('Hello World!');
 });

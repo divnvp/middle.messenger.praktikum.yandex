@@ -1,4 +1,9 @@
 import './button-icon.scss';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-export { default as ButtonIcon } from './button-icon.hbs?raw';
+
+const buttonWithIconTemplate = `
+<button class='button-icon__button-color' type="{{type}}" onclick="{{onclick}}">
+  <img class='button-icon__img' src='{{icon}}' alt='Button icon image' />
+</button>
+`;
+
+export default buttonWithIconTemplate;
