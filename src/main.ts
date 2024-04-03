@@ -2,7 +2,9 @@ import { AuthPage } from '@/pages/auth';
 import { ChatPage } from '@/pages/chats';
 import { ProfileDataPage } from '@/pages/profile-data';
 import { RegistrationPage } from '@/pages/registration';
-import Router from '@/shared/utils/router/router';
+import Router from '@/shared/router/router';
+
+const CURRENT_PAGE = 'current-page';
 
 const router = new Router();
 
@@ -13,10 +15,18 @@ router
   .use('/messenger', ChatPage);
 
 document.addEventListener('click', e => {
-  const pageAttr = (e.target as HTMLElement)?.getAttribute('page');
-  if (pageAttr) {
-    router.go(pageAttr);
+  const pageRouteName = (e.target as HTMLElement)?.getAttribute('page');
+  if (pageRouteName) {
+    router.go(pageRouteName);
+    localStorage.setItem(CURRENT_PAGE, pageRouteName);
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => router.go('/'));
+document.addEventListener('DOMContentLoaded', () => {
+  const item = localStorage.getItem(CURRENT_PAGE);
+  if (item) {
+    router.go(item);
+  } else {
+    router.go('/');
+  }
+});
