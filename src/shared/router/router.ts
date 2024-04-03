@@ -1,24 +1,25 @@
 import { Block } from '@/shared/utils/block';
-import { IRouter } from '@/shared/models/router.interface';
 import Route from '@/shared/router/route';
 
 const APP_QUERY = '#app';
 
 class Router {
-  private readonly _rootQuery: string = APP_QUERY;
+  private readonly rootQuery: string = APP_QUERY;
   private currentRoute: Route | null = null;
   private routes: Route[] = [];
   private history: History = window.history;
 
+  private static __instance: Router;
+
   constructor() {
-    if ((Router as unknown as IRouter).__instance) {
-      return (Router as unknown as IRouter).__instance;
+    if (Router.__instance) {
+      return Router.__instance;
     }
-    (Router as unknown as IRouter).__instance = this;
+    Router.__instance = this;
   }
 
   use(pathname: string, block: typeof Block): Router {
-    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    const route = new Route(pathname, block, { rootQuery: this.rootQuery });
     this.routes.push(route);
     return this;
   }
