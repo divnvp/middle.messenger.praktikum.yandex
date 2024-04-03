@@ -2,17 +2,18 @@ import { Block } from '@/shared/utils/block';
 import { IRouter } from '@/shared/models/router.interface';
 import Route from '@/shared/utils/router/route';
 
+const APP_QUERY = '#app';
+
 class Router {
-  private readonly _rootQuery: string = '';
+  private readonly _rootQuery: string = APP_QUERY;
   private currentRoute: Route | null = null;
   private routes: Route[] = [];
   public history: History = window.history;
 
-  constructor(rootQuery: string) {
+  constructor() {
     if ((Router as unknown as IRouter).__instance) {
       return (Router as unknown as IRouter).__instance;
     }
-    this._rootQuery = rootQuery;
     (Router as unknown as IRouter).__instance = this;
   }
 
