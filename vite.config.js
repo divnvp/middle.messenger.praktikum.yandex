@@ -11,7 +11,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: '/index.html',
-        auth: '/pages/auth/auth.html',
         registration: '/pages/registration/registration.html',
         chats: '/pages/chats/chat.html',
         'error-4xx': '/pages/error-4xx/error-4xx.html',
