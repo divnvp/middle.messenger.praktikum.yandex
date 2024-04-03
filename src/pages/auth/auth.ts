@@ -41,10 +41,11 @@ export class AuthPage extends Block {
       ],
       button: new Button('div', {
         type: 'submit',
-        text: 'Войти'
+        text: 'Войти',
+        page: '/messenger'
       }),
-      link: new Link('a', {
-        url: '/',
+      link: new Link('div', {
+        page: '/sign-up',
         text: 'Зарегистрироваться'
       })
     });
