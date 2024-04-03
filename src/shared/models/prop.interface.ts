@@ -3,3 +3,7 @@ export interface IProp {
   attributes?: Record<string, string>;
   [key: string | symbol]: unknown;
 }
+
+export interface RouteProp {
+  rootQuery: string;
+}

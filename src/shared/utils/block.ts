@@ -95,6 +95,8 @@ export class Block {
     return (fragment as unknown as IElement).content;
   }
 
+  hide() {}
+
   private addEvents() {
     const { events = {} } = this.props;
 
