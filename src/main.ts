@@ -24,8 +24,10 @@ document.addEventListener('click', e => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const item = localStorage.getItem(CURRENT_PAGE);
-  if (item) {
+  if (item && window.location.pathname === item) {
     router.go(item);
+  } else if (window.location.pathname !== item) {
+    router.go(window.location.pathname);
   } else {
     router.go('/');
   }
