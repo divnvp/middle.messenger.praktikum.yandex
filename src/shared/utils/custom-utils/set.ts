@@ -1,6 +1,4 @@
-type Indexed<T = unknown> = {
-  [key in string]: T;
-};
+import { Indexed } from '@/shared/models/indexed.type';
 
 function merge(lhs: Indexed, rhs: Indexed): Indexed {
   for (const p in rhs) {

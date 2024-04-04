@@ -1,3 +1,3 @@
-export function isEquals(lhs: string, rhs: string) {
+export function isEquals(lhs: unknown, rhs: unknown) {
   return lhs === rhs;
 }
