@@ -10,64 +10,69 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-declare const HOST = 'ya-praktikum.tech/api/v2';
-
 export default class HTTPTransport {
-  private apiUrl = '';
+  private readonly HOST = 'https://ya-praktikum.tech/api/v2';
 
-  constructor(localApiUrl: string) {
-    this.apiUrl = `${HOST}${localApiUrl}`;
+  private readonly apiUrl: string = '';
+
+  constructor(apiPath: string) {
+    this.apiUrl = `${this.HOST}${apiPath}`;
   }
-
-  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+  get(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Get });
   }
 
-  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+  post(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Post });
   }
 
-  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+  put(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Put });
   }
 
-  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+  delete(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Delete });
   }
 
-  request(url: string, options: Options = { method: Method.Get }): Promise<XMLHttpRequest> {
-    const { method, headers, data } = options;
-
+  request = (url: string, options: Options, timeout = 5000) => {
+    const { headers = {}, method, data } = options;
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-
       if (method === Method.Get && data) {
         url = `${this.apiUrl}?${queryStringify(data as Record<string, unknown>)}`;
       } else {
-        url = this.apiUrl;
+        url = `${this.apiUrl}${url}`;
       }
 
-      if (headers) {
-        for (const header of Object.entries(headers)) {
-          xhr.setRequestHeader(header[0], header[1]);
-        }
-      }
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url, true);
 
-      xhr.open(method, url);
+      xhr.withCredentials = true;
+
+      if (!(data instanceof FormData)) {
+        this.setHeaders(headers, xhr);
+      }
 
       xhr.onload = function () {
         resolve(xhr);
       };
-
       xhr.onabort = reject;
       xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.timeout = timeout;
 
       if (method === Method.Get || !data) {
         xhr.send();
       } else {
         xhr.send(JSON.stringify(data));
       }
+    });
+  };
+
+  private setHeaders(headers: Record<string, string>, xhr: XMLHttpRequest) {
+    if (!headers['Content-Type']) {
+      headers['Content-Type'] = 'application/json';
+    }
+    Object.keys(headers).forEach(key => {
+      xhr.setRequestHeader(key, headers[key]);
     });
   }
 }

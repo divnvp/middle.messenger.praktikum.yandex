@@ -1,5 +1,4 @@
 import { errorMessage, isValueValid } from '@/shared/utils/validators/validators';
-import { getFormProps } from '@/shared/utils/form-props';
 
 export function onValidate(event: Event): void {
   event.preventDefault();
@@ -26,9 +25,10 @@ export function onValidate(event: Event): void {
   }
 }
 
-export function onValidateSubmit(event: Event) {
+export function onValidateSubmit(event: Event): boolean {
   event.preventDefault();
 
+  let flag = false;
   const form = event.target as HTMLFormElement;
 
   form.querySelectorAll('input').forEach(input => {
@@ -44,13 +44,17 @@ export function onValidateSubmit(event: Event) {
     if (!isValueValid(input.name, input.value)) {
       if (!errorText) {
         parent?.appendChild(child);
+        flag = false;
       }
+      flag = false;
     } else {
       if (errorText) {
         parent?.removeChild(errorText);
+        flag = true;
       }
+      flag = true;
     }
   });
 
-  console.log(getFormProps(form));
+  return flag;
 }
