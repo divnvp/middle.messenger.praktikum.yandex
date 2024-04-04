@@ -4,13 +4,21 @@ import { queryStringify } from '@/shared/utils/query-string';
 type Options = {
   method: Method;
   timeout?: number;
-  data?: Record<string, unknown>;
+  data?: unknown;
   headers?: Record<string, string>;
 };
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
+declare const HOST = 'ya-praktikum.tech/api/v2';
+
 export default class HTTPTransport {
+  private apiUrl = '';
+
+  constructor(localApiUrl: string) {
+    this.apiUrl = `${HOST}${localApiUrl}`;
+  }
+
   get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: Method.Get });
   }
@@ -34,7 +42,9 @@ export default class HTTPTransport {
       const xhr = new XMLHttpRequest();
 
       if (method === Method.Get && data) {
-        url = `${url}?${queryStringify(data)}`;
+        url = `${this.apiUrl}?${queryStringify(data as Record<string, unknown>)}`;
+      } else {
+        url = this.apiUrl;
       }
 
       if (headers) {

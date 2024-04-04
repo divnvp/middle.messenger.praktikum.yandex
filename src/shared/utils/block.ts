@@ -97,6 +97,10 @@ export class Block {
 
   hide() {}
 
+  setProps(props: unknown) {
+    Object.assign(this.props, props);
+  }
+
   private addEvents() {
     const { events = {} } = this.props;
 
