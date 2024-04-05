@@ -1,17 +1,15 @@
-import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
 import { Block } from '@/shared/utils/block';
-import { ButtonWithIcon } from '@/components/button-icon';
-import { ChatItem } from '@/components/chat-item';
+// import { ChatController } from '@/shared/controllers/chat.controller';
 import { ChatList } from '@/components/chat-list';
-import { ChatMessage } from '@/components/chat-message';
+import { ChatPanel } from '@/components/chat-panel';
 import chatTemplate from '@/pages/chats/template';
 import { InputSearch } from '@/components/input-search';
-import { Link } from '@/components/link';
 import { Menu } from '@/components/menu';
-import { MessageItemIn } from '@/components/message-item-in';
-import { MessageItemOut } from '@/components/message-item-out';
+import store from '@/shared/storage/store';
 
 export class ChatPage extends Block {
+  // private readonly chatController = new ChatController();
+
   constructor() {
     super('div', {
       attr: {
@@ -31,45 +29,35 @@ export class ChatPage extends Block {
             class: 'input-search'
           }
         }),
-        chatItems: [
-          new ChatItem('div', {
-            name: 'Андрей',
-            message: 'Изображение',
-            unread: '2'
-          }),
-          new ChatItem('div', { name: 'Киноклуб', message: 'Go на свалку!' }),
-          new ChatItem('div', { name: 'Илья', message: 'А у кого ключи от сарая?', unread: '4' }),
-          new ChatItem('div', { name: 'Илья', message: 'А у кого ключи от сарая?', unread: '2' }),
-          new ChatItem('div', { name: 'тет-а-теты', message: 'А у кого ключи от сарая?' }),
-          new Link('div', { page: '/', text: 'Назад' })
-        ]
+        chatItems: store.getState().chats
       }),
-      chatMessage: new ChatMessage('form', {
-        attr: {
-          class: 'chat-message'
-        },
-        events: {
-          submit: onValidateSubmit,
-          blur: {
-            event: onValidate,
-            querySelector: 'input'
-          }
-        },
-        messageItem: [
-          new MessageItemIn('div', {
-            message: 'Привет!',
-            time: '11:02'
-          }),
-          new MessageItemOut('div', {
-            message: 'Привет!',
-            time: '11:02'
-          })
-        ],
-        button: new ButtonWithIcon('div', {
-          type: 'submit',
-          icon: '../../icons/arrow-right-icon.png'
-        })
-      })
+      chatMessage: new ChatPanel()
+      // chatMessage: new ChatMessage('form', {
+      //   attr: {
+      //     class: 'chat-message'
+      //   },
+      //   events: {
+      //     submit: onValidateSubmit,
+      //     blur: {
+      //       event: onValidate,
+      //       querySelector: 'input'
+      //     }
+      //   },
+      //   messageItem: [
+      //     new MessageItemIn('div', {
+      //       message: 'Привет!',
+      //       time: '11:02'
+      //     }),
+      //     new MessageItemOut('div', {
+      //       message: 'Привет!',
+      //       time: '11:02'
+      //     })
+      //   ],
+      //   button: new ButtonWithIcon('div', {
+      //     type: 'submit',
+      //     icon: '../../icons/arrow-right-icon.png'
+      //   })
+      // })
     });
   }
 

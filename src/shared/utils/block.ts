@@ -19,7 +19,7 @@ export class Block {
 
   private htmlElement?: HTMLElement;
   protected id = makeUUID();
-  private child: IProp = {};
+  child: IProp = {};
   private array: IProp = {};
 
   get element() {

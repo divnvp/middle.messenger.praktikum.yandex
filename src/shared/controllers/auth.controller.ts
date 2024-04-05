@@ -1,6 +1,7 @@
 import { AuthAPI } from '@/shared/api/auth-api';
 import { getFormProps } from '@/shared/utils/form-props';
 import { IAuth } from '@/shared/models/auth.interface';
+import { onErrorPage } from '@/shared/utils/on-error-page';
 import Router from '@/shared/router/router';
 import { Routes } from '@/shared/const/routes';
 import store from '@/shared/storage/store';
@@ -33,7 +34,7 @@ export class AuthController {
   async logout() {
     try {
       const response = await this.authAPI.logout();
-      this.onErrorPage(response);
+      onErrorPage(response);
     } catch (e) {
       throw new Error(String(e));
     }
@@ -41,10 +42,8 @@ export class AuthController {
 
   async login(data: HTMLFormElement) {
     try {
-      console.log('login');
       const signed = await this.authAPI.signIn(getFormProps(data) as unknown as IAuth);
-      console.log(signed);
-      this.onErrorPage(signed);
+      onErrorPage(signed);
       await this.init();
     } catch (e) {
       throw new Error(String(e));
@@ -57,32 +56,8 @@ export class AuthController {
 
     store.set('user', user);
 
-    this.onErrorPage(response);
+    onErrorPage(response);
 
     return user;
-  }
-
-  private onErrorPage(response: XMLHttpRequest) {
-    if (response.status === 400) {
-      this.onNotFoundPage();
-    }
-
-    if (response.status === 500) {
-      this.onErrorServerPage();
-    }
-
-    console.log(response);
-  }
-
-  private onNotFoundPage() {
-    const isPageExists = Object.values(Routes).find(v => v === this.router.getCurrentRoute());
-
-    if (!isPageExists) {
-      this.router.go(Routes.Error400);
-    }
-  }
-
-  private onErrorServerPage() {
-    this.router.go(Routes.Error500);
   }
 }
