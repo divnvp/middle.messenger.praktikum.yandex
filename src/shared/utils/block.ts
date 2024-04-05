@@ -217,12 +217,17 @@ export class Block {
 
   private makePropsProxy = (props: IProp) => {
     const event = this.EVENTS;
-    const eventBus = this.eventBus;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
 
     return new Proxy(props, {
+      get(target, prop: string) {
+        const value = target[prop];
+        return typeof value === 'function' ? value.bind(target) : value;
+      },
       set(target, p, newValue) {
         target[p] = newValue;
-        eventBus().emit(event.FLOW_CDU);
+        self.eventBus().emit(event.FLOW_CDU);
         return true;
       },
       deleteProperty() {

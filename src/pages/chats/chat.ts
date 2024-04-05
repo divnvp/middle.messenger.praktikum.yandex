@@ -1,15 +1,10 @@
 import { Block } from '@/shared/utils/block';
-// import { ChatController } from '@/shared/controllers/chat.controller';
 import { ChatList } from '@/components/chat-list';
 import { ChatPanel } from '@/components/chat-panel';
 import chatTemplate from '@/pages/chats/template';
-import { InputSearch } from '@/components/input-search';
 import { Menu } from '@/components/menu';
-import store from '@/shared/storage/store';
 
 export class ChatPage extends Block {
-  // private readonly chatController = new ChatController();
-
   constructor() {
     super('div', {
       attr: {
@@ -20,17 +15,7 @@ export class ChatPage extends Block {
           class: 'col menu'
         }
       }),
-      chatList: new ChatList('div', {
-        attr: {
-          class: 'chat-list'
-        },
-        inputSearch: new InputSearch('div', {
-          attr: {
-            class: 'input-search'
-          }
-        }),
-        chatItems: store.getState().chats
-      }),
+      chatList: new ChatList(),
       chatMessage: new ChatPanel()
       // chatMessage: new ChatMessage('form', {
       //   attr: {

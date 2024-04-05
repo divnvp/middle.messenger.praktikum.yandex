@@ -54,7 +54,7 @@ export class AuthController {
     const response = await this.authAPI.request();
     const user = response.response;
 
-    store.set('user', user);
+    store.set('user', JSON.parse(user));
 
     onErrorPage(response);
 
