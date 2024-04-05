@@ -1,7 +1,6 @@
 import { Block } from '@/shared/utils/block';
 import { ChatItemsPanel } from '@/components/chat-items-panel';
 import { InputSearch } from '@/components/input-search';
-// import store from '@/shared/storage/store';
 
 export class ChatList extends Block {
   constructor() {
@@ -14,18 +13,9 @@ export class ChatList extends Block {
           class: 'input-search'
         }
       }),
-      chatItems: new ChatItemsPanel()
+      chats: new ChatItemsPanel()
     });
   }
-
-  // override init() {
-  //   this.child['chatItems'] = store.getState().chats?.map(
-  //     chat =>
-  //       new ChatItem('div', {
-  //         name: chat.title
-  //       })
-  //   );
-  // }
 
   override render() {
     return this.compile(chatListTemplate);
@@ -34,5 +24,5 @@ export class ChatList extends Block {
 
 const chatListTemplate = `
   {{{ inputSearch }}}
-  {{{ chatItems }}}
+  {{{ chats }}}
 `;

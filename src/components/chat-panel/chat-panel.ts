@@ -1,12 +1,9 @@
 import './chat-panel.scss';
 import { AddChat } from '@/components/add-chat';
 import { Block } from '@/shared/utils/block';
-import { ChatController } from '@/shared/controllers/chat.controller';
 import { InputField } from '@/components/input-field';
 
 export class ChatPanel extends Block {
-  private readonly chatController = new ChatController();
-
   constructor() {
     super('div', {
       attr: {
@@ -18,8 +15,6 @@ export class ChatPanel extends Block {
         id: 'chat-name'
       })
     });
-
-    this.chatController.getChats();
   }
 
   override render() {

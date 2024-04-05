@@ -1,8 +1,8 @@
 import './add-chat.scss';
 import { Block } from '@/shared/utils/block';
-import { ChatApi } from '@/shared/api/chat-api';
+import { ChatController } from '@/shared/controllers/chat.controller';
 
-const chatAPI = new ChatApi();
+const chatController = new ChatController();
 
 export class AddChat extends Block {
   constructor() {
@@ -11,9 +11,7 @@ export class AddChat extends Block {
         click: () => {
           const chatName = document.getElementById('chat-name');
           if ((chatName as unknown as { value: string })?.value) {
-            chatAPI.create({
-              title: (chatName as unknown as { value: string }).value
-            });
+            chatController.createChat({ title: (chatName as unknown as { value: string }).value });
           }
         }
       }

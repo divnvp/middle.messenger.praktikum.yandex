@@ -45,6 +45,10 @@ class Router {
     this.history.go(-1);
   }
 
+  goCustom(delta: number) {
+    this.history.go(delta);
+  }
+
   forward(): void {
     this.history.forward();
   }

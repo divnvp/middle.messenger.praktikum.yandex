@@ -14,7 +14,7 @@ export class Block {
     FLOW_RENDER: 'flow:render'
   };
   private readonly meta?: IMeta;
-  private readonly props: IProp = {};
+  protected readonly props: IProp = {};
   private readonly eventBus: () => EventBus;
 
   private htmlElement?: HTMLElement;
@@ -98,7 +98,12 @@ export class Block {
   hide() {}
 
   setProps(props: unknown) {
-    Object.assign(this.props, props);
+    console.log(this.child);
+    console.log(props);
+
+    Object.assign(this.child, props);
+
+    console.log(this.child);
   }
 
   private addEvents() {
