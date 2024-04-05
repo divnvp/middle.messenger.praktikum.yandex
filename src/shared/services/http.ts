@@ -34,7 +34,7 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: Method.Delete });
   }
 
-  request = (url: string, options: Options, timeout = 5000) => {
+  request = (url: string, options: Options, timeout = 5000): Promise<XMLHttpRequest> => {
     const { headers = {}, method, data } = options;
     return new Promise((resolve, reject) => {
       if (method === Method.Get && data) {

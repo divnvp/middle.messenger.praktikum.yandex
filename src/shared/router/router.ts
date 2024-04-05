@@ -32,6 +32,31 @@ class Router {
     this._onRoute(window.location.pathname);
   }
 
+  go(pathname: string): void {
+    this.history.pushState({}, '', pathname);
+    this._onRoute(pathname);
+  }
+
+  back(): void {
+    this.history.back();
+  }
+
+  previous() {
+    this.history.go(-1);
+  }
+
+  forward(): void {
+    this.history.forward();
+  }
+
+  getRoute(pathname: string): Route | undefined {
+    return this.routes.find(route => route.match(pathname));
+  }
+
+  getCurrentRoute() {
+    return window.location.pathname;
+  }
+
   private _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
     if (!route) {
@@ -42,23 +67,6 @@ class Router {
     }
     this.currentRoute = route;
     route.render();
-  }
-
-  go(pathname: string): void {
-    this.history.pushState({}, '', pathname);
-    this._onRoute(pathname);
-  }
-
-  back(): void {
-    this.history.back();
-  }
-
-  forward(): void {
-    this.history.forward();
-  }
-
-  getRoute(pathname: string): Route | undefined {
-    return this.routes.find(route => route.match(pathname));
   }
 }
 export default Router;

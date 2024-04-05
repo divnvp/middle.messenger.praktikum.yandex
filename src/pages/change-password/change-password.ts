@@ -1,21 +1,21 @@
 import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
 import { Block } from '@/shared/utils/block';
 import { Button } from '@/components/button';
+import changePasswordTemplate from '@/pages/change-password/template';
 import { InputField } from '@/components/input-field';
 import { Link } from '@/components/link';
 import { Menu } from '@/components/menu';
-import profileDataTemplate from '@/pages/profile-data/template';
 import { Routes } from '@/shared/const/routes';
 import { v4 as uuid } from 'uuid';
 
-export class ProfileDataPage extends Block {
+export class ChangePasswordPage extends Block {
   constructor() {
     super('form', {
-      attr: {
-        class: 'profile-page'
-      },
       events: {
         submit: onValidateSubmit
+      },
+      attr: {
+        class: 'profile-page'
       },
       menu: new Menu('div', {
         attr: {
@@ -27,46 +27,28 @@ export class ProfileDataPage extends Block {
           events: {
             blur: { event: onValidate, querySelector: 'input' }
           },
-          name: 'email',
-          title: 'Почта',
+          name: 'old_password',
+          title: 'Старый пароль',
           id: uuid(),
-          type: 'text'
+          type: 'password'
         }),
         new InputField('div', {
           events: {
             blur: { event: onValidate, querySelector: 'input' }
           },
-          name: 'login',
-          title: 'Логин',
+          name: 'new_password',
+          title: 'Новый пароль',
           id: uuid(),
-          type: 'text'
+          type: 'password'
         }),
         new InputField('div', {
           events: {
             blur: { event: onValidate, querySelector: 'input' }
           },
-          name: 'first_name',
-          title: 'Имя',
+          name: 'password_again',
+          title: 'Повторите пароль',
           id: uuid(),
-          type: 'text'
-        }),
-        new InputField('div', {
-          events: {
-            blur: { event: onValidate, querySelector: 'input' }
-          },
-          name: 'second_name',
-          title: 'Фамилия',
-          id: uuid(),
-          type: 'text'
-        }),
-        new InputField('div', {
-          events: {
-            blur: { event: onValidate, querySelector: 'input' }
-          },
-          name: 'phone',
-          title: 'Телефон',
-          id: uuid(),
-          type: 'text'
+          type: 'password'
         })
       ],
       link: new Link('div', { page: Routes.Settings, text: 'Назад' }),
@@ -79,6 +61,6 @@ export class ProfileDataPage extends Block {
   }
 
   override render() {
-    return this.compile(profileDataTemplate);
+    return this.compile(changePasswordTemplate);
   }
 }
