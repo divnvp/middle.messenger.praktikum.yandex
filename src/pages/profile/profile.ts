@@ -52,7 +52,7 @@ export class ProfilePage extends Block {
       links: [
         new Link('div', { page: Routes.ChangeUserData, text: 'Изменить данные' }),
         new Link('div', { page: Routes.ChangePassword, text: 'Изменить пароль' }),
-        new Link('div', { page: Routes.Messenger, text: 'Назад' })
+        new Link('div', { page: Routes.Auth, text: 'Выйти' })
       ]
     });
   }
