@@ -26,7 +26,6 @@ export class ProfileDataPage extends Block {
         submit: (e: Event) => {
           if (onValidateSubmit(e)) {
             const data = e.target as HTMLFormElement;
-            console.log(getFormProps(data));
             userController.updateData(getFormProps(data) as unknown as IUser);
           }
         }

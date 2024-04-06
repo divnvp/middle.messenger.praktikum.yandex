@@ -15,6 +15,11 @@ export class UserAPI implements IUserApi {
   }
 
   updatePassword(passwords: IPassword) {
-    return userAPIInstance.put('/profile/password', { data: { passwords } });
+    console.log(passwords);
+    return userAPIInstance.put('/password', {
+      data: {
+        ...passwords
+      }
+    });
   }
 }
