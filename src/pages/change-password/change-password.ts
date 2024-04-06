@@ -20,7 +20,6 @@ export class ChangePasswordPage extends Block {
         submit: (e: Event) => {
           if (onValidateSubmit(e)) {
             const data = e.target as HTMLFormElement;
-            console.log(getFormProps(data));
             userController.changePassword({
               newPassword: (getFormProps(data) as unknown as IPassword).newPassword,
               oldPassword: (getFormProps(data) as unknown as IPassword).oldPassword

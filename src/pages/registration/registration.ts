@@ -7,19 +7,16 @@ import { InputField } from '@/components/input-field';
 import { IUser } from '@/shared/models/user.interface';
 import { Link } from '@/components/link';
 import registrationTemplate from '@/pages/registration/template';
-// import Router from '@/shared/router/router';
 import { Title } from '@/components/title';
 import { v4 as uuid } from 'uuid';
 
 export class RegistrationPage extends Block {
   private readonly authAPI = new AuthAPI();
-  // private readonly router = new Router();
 
   constructor() {
     super('form', {
       events: {
         submit: async (e: Event) => {
-          console.log(onValidateSubmit(e));
           if (onValidateSubmit(e)) {
             await this.onRegistration(e);
           }
@@ -109,9 +106,6 @@ export class RegistrationPage extends Block {
       if (!(registered.status >= 200 || registered.status <= 300)) {
         return;
       }
-      // else {
-      //   this.router.go(Routes.Auth);
-      // }
     } catch (e) {
       throw new Error(String(e));
     }

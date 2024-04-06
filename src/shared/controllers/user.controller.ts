@@ -19,7 +19,6 @@ export class UserController {
 
   async changePassword(data: IPassword) {
     try {
-      console.log(data);
       const response = await this.userAPI.updatePassword(data);
       onErrorPage(response);
     } catch (e) {

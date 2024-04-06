@@ -15,7 +15,6 @@ export class UserAPI implements IUserApi {
   }
 
   updatePassword(passwords: IPassword) {
-    console.log(passwords);
     return userAPIInstance.put('/password', {
       data: {
         ...passwords
