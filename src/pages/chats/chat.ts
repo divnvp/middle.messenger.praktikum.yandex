@@ -44,7 +44,6 @@ export class ChatPage extends Block {
       //   })
       // })
     });
-    console.log(this);
   }
 
   override render() {

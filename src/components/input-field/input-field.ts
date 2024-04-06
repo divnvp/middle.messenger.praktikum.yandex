@@ -7,6 +7,7 @@ const inputFieldTemplate = `
     name="{{ name }}" 
     id="{{ id }}" 
     placeholder="{{placeholder}}"
+    value="{{ value }}"
   >
   <label class="did-floating-label">{{ title }}</label>
 </div>

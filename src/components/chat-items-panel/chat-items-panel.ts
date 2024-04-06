@@ -1,5 +1,4 @@
 import './chat-items-panel.scss';
-// import store, { StoreEvents } from '@/shared/storage/store';
 import { Block } from '@/shared/utils/block';
 import { ChatController } from '@/shared/controllers/chat.controller';
 import { ChatItem } from '@/components/chat-item';
@@ -20,19 +19,6 @@ export class ChatItemsPanel extends Block {
           })
       )
     });
-    //
-    // store.on(StoreEvents.Updated, () => {
-    //   this.setProps(
-    //     (store.getState().chats = chatController.getChatsFromStore()?.map(
-    //       chat =>
-    //         new ChatItem('div', {
-    //           name: (chat as IChat).title,
-    //           unread: (chat as IChat).unread_count,
-    //           message: (chat as IChat).last_message ?? ''
-    //         })
-    //     ))
-    //   );
-    // });
   }
 
   override render() {
