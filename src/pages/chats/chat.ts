@@ -1,8 +1,12 @@
 import { Block } from '@/shared/utils/block';
+import { ChatController } from '@/shared/controllers/chat.controller';
 import { ChatList } from '@/components/chat-list';
 import { ChatPanel } from '@/components/chat-panel';
 import chatTemplate from '@/pages/chats/template';
 import { Menu } from '@/components/menu';
+
+const chatController = new ChatController();
+await chatController.getChats();
 
 export class ChatPage extends Block {
   constructor() {
@@ -17,32 +21,6 @@ export class ChatPage extends Block {
       }),
       chatList: new ChatList(),
       chatMessage: new ChatPanel()
-      // chatMessage: new ChatMessage('form', {
-      //   attr: {
-      //     class: 'chat-message'
-      //   },
-      //   events: {
-      //     submit: onValidateSubmit,
-      //     blur: {
-      //       event: onValidate,
-      //       querySelector: 'input'
-      //     }
-      //   },
-      //   messageItem: [
-      //     new MessageItemIn('div', {
-      //       message: 'Привет!',
-      //       time: '11:02'
-      //     }),
-      //     new MessageItemOut('div', {
-      //       message: 'Привет!',
-      //       time: '11:02'
-      //     })
-      //   ],
-      //   button: new ButtonWithIcon('div', {
-      //     type: 'submit',
-      //     icon: '../../icons/arrow-right-icon.png'
-      //   })
-      // })
     });
   }
 

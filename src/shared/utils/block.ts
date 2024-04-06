@@ -208,15 +208,13 @@ export class Block {
 
   private localRender() {
     if (this.htmlElement) {
-      this.removeEvents();
-      const childrens = this.htmlElement.children;
-
-      if (childrens && this.htmlElement) {
-        for (let i = 0; i < childrens.length; i++) {
-          this.htmlElement.removeChild(childrens[i]);
+      const children = this.htmlElement.children;
+      if (children) {
+        for (let i = 0; i < children.length; i++) {
+          this.htmlElement.removeChild(children[i]);
         }
       }
-
+      this.removeEvents();
       this.htmlElement.appendChild(this.render() as unknown as Node);
       this.addEvents();
       this.addAttributes();

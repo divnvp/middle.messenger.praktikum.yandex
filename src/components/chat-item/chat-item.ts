@@ -1,7 +1,7 @@
 import './chat-item.scss';
 
 const chatItemTemplate = `
-<div class='chat-item'>
+<div class='chat-item' onclick="{{this.events.click}}">
   <div class='chat-item__line'></div>
   <div class='chat-item__block'>
     <div class='chat-item__avatar'>

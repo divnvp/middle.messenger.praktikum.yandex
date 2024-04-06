@@ -11,25 +11,8 @@ await chatController.init();
 export class ChatItemsPanel extends Block {
   constructor() {
     super('div', {
-      chats: chatController.getChatsFromStore()?.map(
-        chat =>
-          new ChatItem('div', {
-            events: {
-              click: (e: Event) => {
-                if (e) {
-                  store.set('currentChat', e.target);
-                  console.log(e);
-                }
-              }
-            },
-            name: (chat as IChat).title,
-            unread: (chat as IChat).unread_count,
-            message: (chat as IChat).last_message ?? ''
-          })
-      )
+      chats: chatController.getChatsFromStore()?.map(chat => new ChatItem(chat as IChat))
     });
-
-    console.log(this.array);
 
     store.on(StoreEvents.Updated, () => {
       this.setProps(store.getState());

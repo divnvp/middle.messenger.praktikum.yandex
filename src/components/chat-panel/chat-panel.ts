@@ -2,7 +2,12 @@ import './chat-panel.scss';
 import store, { StoreEvents } from '@/shared/storage/store';
 import { AddChat } from '@/components/add-chat';
 import { Block } from '@/shared/utils/block';
+import { ChatMessage } from '@/components/chat-message';
 import { InputField } from '@/components/input-field';
+
+store.on(StoreEvents.Updated, () => {
+  store.getState();
+});
 
 export class ChatPanel extends Block {
   constructor() {
@@ -15,7 +20,8 @@ export class ChatPanel extends Block {
       input: new InputField('div', {
         placeholder: 'Название чата',
         id: 'chat-name'
-      })
+      }),
+      chat: new ChatMessage()
     });
 
     store.on(StoreEvents.Updated, () => {
@@ -30,7 +36,7 @@ export class ChatPanel extends Block {
 
 const chatMessagePanel = `
 {{#if currentChat}}
-<div>ddddd</div>
+  {{{ chat }}}
 {{else}}
 <div class="chat-message-panel">
   <p>Выберите чат из списка или создайте свой</p>
