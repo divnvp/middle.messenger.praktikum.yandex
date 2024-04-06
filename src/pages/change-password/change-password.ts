@@ -7,11 +7,13 @@ import { InputField } from '@/components/input-field';
 import { IPassword } from '@/shared/models/password.interafce';
 import { Link } from '@/components/link';
 import { Menu } from '@/components/menu';
+import { ResourcesController } from '@/shared/controllers/resources.controller';
 import { Routes } from '@/shared/const/routes';
 import { UserController } from '@/shared/controllers/user.controller';
 import { v4 as uuid } from 'uuid';
 
 const userController = new UserController();
+const resourcesController = new ResourcesController();
 
 export class ChangePasswordPage extends Block {
   constructor() {
@@ -29,6 +31,7 @@ export class ChangePasswordPage extends Block {
           }
         }
       },
+      src: resourcesController.getUserAvatarString(),
       attr: {
         class: 'profile-page'
       },

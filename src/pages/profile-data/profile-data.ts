@@ -8,12 +8,14 @@ import { IUser } from '@/shared/models/user.interface';
 import { Link } from '@/components/link';
 import { Menu } from '@/components/menu';
 import profileDataTemplate from '@/pages/profile-data/template';
+import { ResourcesController } from '@/shared/controllers/resources.controller';
 import { Routes } from '@/shared/const/routes';
 import { UserController } from '@/shared/controllers/user.controller';
 import { v4 as uuid } from 'uuid';
 
 const authController = new AuthController();
 const userController = new UserController();
+const resourcesController = new ResourcesController();
 await authController.init();
 
 export class ProfileDataPage extends Block {
@@ -24,12 +26,15 @@ export class ProfileDataPage extends Block {
       },
       events: {
         submit: (e: Event) => {
+          userController.updateAvatar();
+
           if (onValidateSubmit(e)) {
             const data = e.target as HTMLFormElement;
             userController.updateData(getFormProps(data) as unknown as IUser);
           }
         }
       },
+      src: resourcesController.getUserAvatarString(),
       menu: new Menu('div', {
         attr: {
           class: 'col menu'

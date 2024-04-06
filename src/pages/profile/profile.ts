@@ -4,11 +4,13 @@ import { InputField } from '@/components/input-field';
 import { Link } from '@/components/link';
 import { Menu } from '@/components/menu';
 import profileTemplate from '@/pages/profile/template';
+import { ResourcesController } from '@/shared/controllers/resources.controller';
 import { Routes } from '@/shared/const/routes';
 import store from '@/shared/storage/store';
 import { v4 as uuid } from 'uuid';
 
 const authController = new AuthController();
+const resourcesController = new ResourcesController();
 await authController.init();
 
 export class ProfilePage extends Block {
@@ -17,6 +19,7 @@ export class ProfilePage extends Block {
       attr: {
         class: 'profile-page'
       },
+      src: resourcesController.getUserAvatarString(),
       menu: new Menu('div', {
         attr: {
           class: 'col menu'

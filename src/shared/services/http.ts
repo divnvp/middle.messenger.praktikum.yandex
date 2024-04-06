@@ -1,3 +1,4 @@
+import { HOST } from '@/shared/const/api';
 import { Method } from '@/shared/const/method';
 import { queryStringify } from '@/shared/utils/query-string';
 
@@ -11,12 +12,10 @@ type Options = {
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
 export default class HTTPTransport {
-  private readonly HOST = 'https://ya-praktikum.tech/api/v2';
-
   private readonly apiUrl: string = '';
 
   constructor(apiPath: string) {
-    this.apiUrl = `${this.HOST}${apiPath}`;
+    this.apiUrl = `${HOST}${apiPath}`;
   }
   get(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Get });

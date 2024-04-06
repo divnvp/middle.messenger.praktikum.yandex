@@ -2,7 +2,9 @@ const profileTemplate = `
 {{{ menu }}}
 
 <div class='profile-page__content'>
-  <img class='profile-page__avatar' src='' alt='Profile page avatar'>
+  <label class="page-data__avatar">
+    <img src="{{ src }}" alt="avatar" class="profile-data__avatar">
+  </label>
   <div class='profile-page__fields'>
     {{{ fields }}}
   </div>
