@@ -20,7 +20,7 @@ export class Block {
   private htmlElement?: HTMLElement;
   protected id = makeUUID();
   child: IProp = {};
-  private array: IProp = {};
+  array: IProp = {};
 
   get element() {
     return this.htmlElement;
@@ -76,7 +76,7 @@ export class Block {
     return this.element;
   }
 
-  compile(template: string, props?: IProp) {
+  compile(template: string, props?: IProp): DocumentFragment {
     const fragment: HTMLElement = this.createElement('template');
 
     if (!props) {
@@ -92,7 +92,7 @@ export class Block {
     this.createChildComponents(fragment);
     this.createListComponent(fragment);
 
-    return (fragment as unknown as IElement).content;
+    return (fragment as unknown as HTMLTemplateElement).content;
   }
 
   hide() {}
@@ -209,6 +209,14 @@ export class Block {
   private localRender() {
     if (this.htmlElement) {
       this.removeEvents();
+      const childrens = this.htmlElement.children;
+
+      if (childrens && this.htmlElement) {
+        for (let i = 0; i < childrens.length; i++) {
+          this.htmlElement.removeChild(childrens[i]);
+        }
+      }
+
       this.htmlElement.appendChild(this.render() as unknown as Node);
       this.addEvents();
       this.addAttributes();

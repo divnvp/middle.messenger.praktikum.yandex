@@ -1,4 +1,5 @@
 import './chat-panel.scss';
+import store, { StoreEvents } from '@/shared/storage/store';
 import { AddChat } from '@/components/add-chat';
 import { Block } from '@/shared/utils/block';
 import { InputField } from '@/components/input-field';
@@ -9,11 +10,16 @@ export class ChatPanel extends Block {
       attr: {
         class: 'chat-message'
       },
+      currentChat: store.getState().currentChat,
       addChat: new AddChat(),
       input: new InputField('div', {
         placeholder: 'Название чата',
         id: 'chat-name'
       })
+    });
+
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState());
     });
   }
 
@@ -23,6 +29,9 @@ export class ChatPanel extends Block {
 }
 
 const chatMessagePanel = `
+{{#if currentChat}}
+<div>ddddd</div>
+{{else}}
 <div class="chat-message-panel">
   <p>Выберите чат из списка или создайте свой</p>
   
@@ -31,4 +40,5 @@ const chatMessagePanel = `
     {{{ addChat }}}
   </div>
 </div>
+{{/if}}
 `;

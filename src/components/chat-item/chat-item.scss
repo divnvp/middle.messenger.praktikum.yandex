@@ -2,6 +2,12 @@
 @import '../../index';
 
 .chat-item {
+  &:hover {
+    background-color: $button-bgcolor;
+    color: $text-bgcolor;
+    border-radius: 21px;
+  }
+
   &__line {
     height: 1px;
     margin: 2px 0;
@@ -84,5 +90,6 @@
   &__avatar {
     width: 47px;
     height: 47px;
+    padding-left: 10px;
   }
 }

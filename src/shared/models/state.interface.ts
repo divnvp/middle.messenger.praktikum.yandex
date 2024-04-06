@@ -5,4 +5,5 @@ import { IUser } from '@/shared/models/user.interface';
 export interface IState {
   user?: IUser;
   chats?: IChat[] | ChatItem[];
+  currentChat?: IChat;
 }

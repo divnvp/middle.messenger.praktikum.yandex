@@ -1,3 +1,4 @@
+import './menu.scss';
 import { Block } from '@/shared/utils/block';
 import menuTemplate from '@/components/menu/menu';
 

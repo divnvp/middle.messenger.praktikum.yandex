@@ -1,4 +1,5 @@
 import './chat-items-panel.scss';
+import store, { StoreEvents } from '@/shared/storage/store';
 import { Block } from '@/shared/utils/block';
 import { ChatController } from '@/shared/controllers/chat.controller';
 import { ChatItem } from '@/components/chat-item';
@@ -13,11 +14,25 @@ export class ChatItemsPanel extends Block {
       chats: chatController.getChatsFromStore()?.map(
         chat =>
           new ChatItem('div', {
+            events: {
+              click: (e: Event) => {
+                if (e) {
+                  store.set('currentChat', e.target);
+                  console.log(e);
+                }
+              }
+            },
             name: (chat as IChat).title,
             unread: (chat as IChat).unread_count,
             message: (chat as IChat).last_message ?? ''
           })
       )
+    });
+
+    console.log(this.array);
+
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(store.getState());
     });
   }
 
