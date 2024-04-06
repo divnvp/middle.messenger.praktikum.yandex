@@ -10,8 +10,8 @@ export class UserAPI implements IUserApi {
     return userAPIInstance.put('/profile', { data });
   }
 
-  updateAvatar(avatar: string) {
-    return userAPIInstance.put('/profile/avatar', { data: { avatar } });
+  updateAvatar(data: FormData) {
+    return userAPIInstance.put('/profile/avatar', { data }, true);
   }
 
   updatePassword(passwords: IPassword) {

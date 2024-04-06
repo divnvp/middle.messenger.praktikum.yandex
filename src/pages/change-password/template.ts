@@ -3,7 +3,7 @@ const changePasswordTemplate = `
   {{{ menu }}}
 
   <div class='profile-page__content'>
-    <img class='profile-page__avatar' src='' alt="avatar">
+    <input class='profile-page__avatar' type="file" id="avatar" accept="image/*">
     <div class='profile-page__fields' id="change-password">
       {{{ fields }}}
       {{{ button }}}

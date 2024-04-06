@@ -26,16 +26,21 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: Method.Post });
   }
 
-  put(url: string, options: OptionsWithoutMethod = {}) {
-    return this.request(url, { ...options, method: Method.Put });
+  put(url: string, options: OptionsWithoutMethod = {}, binary?: boolean) {
+    return this.request(url, { ...options, method: Method.Put }, 5000, binary);
   }
 
   delete(url: string, options: OptionsWithoutMethod = {}) {
     return this.request(url, { ...options, method: Method.Delete });
   }
 
-  request = (url: string, options: Options, timeout = 5000): Promise<XMLHttpRequest> => {
-    const { headers = {}, method, data } = options;
+  request = (
+    url: string,
+    options: Options,
+    timeout = 5000,
+    binary?: boolean
+  ): Promise<XMLHttpRequest> => {
+    const { method, data } = options;
     return new Promise((resolve, reject) => {
       if (method === Method.Get && data) {
         url = `${this.apiUrl}?${queryStringify(data as Record<string, unknown>)}`;
@@ -48,8 +53,8 @@ export default class HTTPTransport {
 
       xhr.withCredentials = true;
 
-      if (!(data instanceof FormData)) {
-        this.setHeaders(headers, xhr);
+      if (!binary) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
       }
 
       xhr.onload = function () {
@@ -61,18 +66,11 @@ export default class HTTPTransport {
 
       if (method === Method.Get || !data) {
         xhr.send();
+      } else if (binary) {
+        xhr.send(data as Document | XMLHttpRequestBodyInit | null | undefined);
       } else {
         xhr.send(JSON.stringify(data));
       }
     });
   };
-
-  private setHeaders(headers: Record<string, string>, xhr: XMLHttpRequest) {
-    if (!headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json';
-    }
-    Object.keys(headers).forEach(key => {
-      xhr.setRequestHeader(key, headers[key]);
-    });
-  }
 }

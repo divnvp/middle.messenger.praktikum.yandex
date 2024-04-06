@@ -25,4 +25,26 @@ export class UserController {
       throw new Error(String(e));
     }
   }
+
+  async updateAvatar() {
+    try {
+      const avatar = document.getElementById('avatar') as HTMLInputElement;
+
+      if (avatar.files && avatar.files.length) {
+        const newAvatar = avatar.files[0];
+        const reader = new FileReader();
+
+        reader.onload = async () => {
+          const formData = new FormData();
+          formData.append('avatar', newAvatar);
+
+          await this.userAPI.updateAvatar(formData);
+        };
+
+        reader.readAsDataURL(newAvatar);
+      }
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
 }

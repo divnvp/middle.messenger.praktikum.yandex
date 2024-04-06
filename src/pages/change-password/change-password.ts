@@ -18,6 +18,8 @@ export class ChangePasswordPage extends Block {
     super('form', {
       events: {
         submit: (e: Event) => {
+          userController.updateAvatar();
+
           if (onValidateSubmit(e)) {
             const data = e.target as HTMLFormElement;
             userController.changePassword({
