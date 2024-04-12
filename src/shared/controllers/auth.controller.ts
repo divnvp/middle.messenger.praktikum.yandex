@@ -77,7 +77,7 @@ class AuthController {
 
       return user;
     } catch (e) {
-      throw new Error(e as string);
+      throw new Error(String(e));
     }
   }
 
