@@ -16,11 +16,11 @@ export class Store extends EventBus {
     currentChatUsers: [] as IUser[]
   };
 
-  public getState() {
+  getState() {
     return this.state;
   }
 
-  public set(path: string, value: unknown) {
+  set(path: string, value: unknown) {
     set(this.state, path, value);
     this.emit(StoreEvents.Updated);
   }
