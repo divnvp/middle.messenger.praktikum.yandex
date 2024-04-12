@@ -33,7 +33,6 @@ export class ChatsAPI implements IChatApi {
   }
 
   updateChatAvatar(chatId: number, avatar: unknown) {
-    console.log(avatar);
     return this.chatAPIInstance.put('/avatar', { chatId, avatar });
   }
 }

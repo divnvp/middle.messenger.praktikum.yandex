@@ -1,3 +1,4 @@
+import store, { StoreEvents } from '@/shared/storage/store';
 import Block from '@/shared/utils/block';
 import { Button } from '@/components/button';
 import { InputField } from '@/components/input-field';
@@ -17,6 +18,10 @@ export class RemoveUser extends Block<IProp> {
         title: 'ИД пользователя',
         id: 'id-user-for-remove'
       })
+    });
+
+    store.on(StoreEvents.Updated, () => {
+      this.setProps(props);
     });
   }
 

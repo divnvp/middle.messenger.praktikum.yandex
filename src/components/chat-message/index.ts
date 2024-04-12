@@ -14,6 +14,7 @@ import Router from '@/shared/router/router';
 import { Routes } from '@/shared/const/routes';
 import SocketController from '@/shared/controllers/socket.controller';
 import template from './template.hbs?raw';
+import { Text } from '@/components/text';
 import { TProp } from '@/shared/models/prop.type';
 
 interface IProps extends TProp, IState {
@@ -74,6 +75,13 @@ export class ChatMessage extends Block<Partial<IProps>> {
               })
           )
           .reverse() ?? [];
+
+      this.child['title'] = new Text({
+        text: store
+          .getState()
+          .currentChatUsers.map(v => `${v.first_name}, id: ${v.id}`)
+          .join(', ')
+      });
 
       this.child['userAvatar'] = new ChangeAvatar({
         photoUrl: newProps.currentChat.avatar

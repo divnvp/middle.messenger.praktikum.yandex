@@ -5,7 +5,10 @@
         <div class='chat-message-header__avatar'>
           {{{userAvatar}}}
         </div>
-        <h1 class='chat-message-header__name'>{{this.currentChat.title}}</h1>
+        <div class='col'>
+          <h1 class='chat-message-header__name'>{{this.currentChat.title}}</h1>
+          <p style="font-size: 1rem">{{{title}}}</p>
+        </div>
       </div>
 
       {{{modal}}}
@@ -31,7 +34,7 @@
       <form class='chat-message-footer__message-form' onsubmit={{this.onSend}}>
         <label class='chat-message-footer__message-label'>
           <input
-            id="message-value"
+            id='message-value'
             class='chat-message-footer__message'
             type='text'
             autocomplete='on'

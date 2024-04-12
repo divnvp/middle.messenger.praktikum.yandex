@@ -46,6 +46,7 @@ export class Modal extends Block<IProps> {
     });
 
     this.child['removeUser'] = new RemoveUser({
+      currentUsers: store.getState().currentChatUsers,
       onClick: async (e: Event) => {
         if (e) {
           e.preventDefault();
@@ -60,6 +61,7 @@ export class Modal extends Block<IProps> {
               await ChatController.deleteUser(chatId, userId as unknown as number);
 
               this.setProps({ isOpened: false });
+              ChatController.getChatUsers(chatId);
             }
           } catch (e) {
             throw new Error(String(e));
@@ -83,6 +85,7 @@ export class Modal extends Block<IProps> {
               await ChatController.addUser(chatId, userId as unknown as number);
 
               this.setProps({ isOpened: false });
+              ChatController.getChatUsers(chatId);
             }
           } catch (e) {
             throw new Error(String(e));

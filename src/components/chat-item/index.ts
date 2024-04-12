@@ -24,6 +24,7 @@ export class ChatItem extends Block<IProps> {
         click: (e: Event) => {
           if (e) {
             ChatController.selectChat(this.props.chat as IChat);
+            ChatController.getChatUsers(this.props.chat!.id);
             Router.go(Routes.Messenger);
           }
         }

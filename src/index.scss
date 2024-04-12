@@ -283,6 +283,13 @@ button {
   justify-content: end;
   margin: 0 1rem;
 
+  &-out {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 1rem;
+  }
+
   &_in {
     width: auto;
     max-width: 50%;
@@ -311,6 +318,14 @@ button {
     border-radius: 1rem;
 
     font: $font-small;
+
+    &__time {
+      margin-top: 2rem;
+
+      font: $font-nano;
+      color: $text-light-color;
+      text-align: end;
+    }
   }
 }
 

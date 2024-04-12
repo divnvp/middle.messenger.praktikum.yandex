@@ -12,7 +12,8 @@ export class Store extends EventBus {
   private state: IState = {
     user: {} as IUser,
     chats: [] as IChat[],
-    currentChat: {} as IChat
+    currentChat: {} as IChat,
+    currentChatUsers: [] as IUser[]
   };
 
   public getState() {
