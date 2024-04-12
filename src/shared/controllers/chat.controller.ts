@@ -67,7 +67,16 @@ class ChatsController {
     return response.response.token;
   }
 
-  public selectChat(chat: IChat) {
+  async getChatUsers(id: number) {
+    try {
+      const response = await this.api.getChatUsers(id);
+      store.set('currentChatUsers', response.response);
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
+
+  selectChat(chat: IChat) {
     store.set('currentChat', chat);
   }
 }
