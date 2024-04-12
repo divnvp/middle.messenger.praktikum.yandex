@@ -7,12 +7,7 @@ export default defineConfig({
   root: './src',
   publicDir: resolve(__dirname, 'public'),
   build: {
-    outDir: resolve(__dirname, 'dist'),
-    rollupOptions: {
-      input: {
-        index: '/index.html'
-      }
-    }
+    outDir: resolve(__dirname, 'dist')
   },
   resolve: {
     alias: [
@@ -21,5 +16,8 @@ export default defineConfig({
         replacement: resolve(__dirname, './src')
       }
     ]
+  },
+  server: {
+    open: '/'
   }
 });
