@@ -5,7 +5,7 @@ import store from '@/shared/storage/store';
 import { WS_HOST } from '@/shared/const/api';
 
 class SocketController {
-  private clients = new Map();
+  private clients: { chatId: number; socket: Socket }[] = [];
 
   get doesCurrentChatExists() {
     return store.getState().currentChat;
@@ -16,7 +16,7 @@ class SocketController {
   }
 
   async open(token: string, chatId: number) {
-    if (this.clients.has(chatId)) {
+    if (this.clients.find(v => v.chatId === chatId)) {
       return;
     }
 
@@ -24,27 +24,29 @@ class SocketController {
     this.getPrevious(chatId);
   }
 
-  publish(id: number, message: string) {
-    this.clients.get(id)?.send({ type: SocketEvents.Message, content: message });
+  publish(chatId: number, message: string) {
+    const index = this.clients.findIndex(v => v.chatId === chatId);
+    this.clients[index].socket.send({ type: SocketEvents.Message, content: message });
   }
 
   socketRemove() {
-    if (this.clients.size) {
-      [...this.clients.values()].forEach(ws => ws.close());
+    if (this.clients.length) {
+      [...this.clients].forEach(ws => ws.socket.close());
     }
   }
 
   private async connectToSocket(chatId: number, userId: number, token: string) {
     try {
       const ws = new Socket(`${WS_HOST}${userId}/${chatId}/${token}`);
-      this.clients.set(chatId, ws);
+      this.clients.push({ chatId, socket: ws });
 
       await ws.getPromiseOpen();
 
       ws.on(SocketEvents.Message, event => this.setMessages(chatId, event as IMessage));
 
       ws.on(SocketEvents.Close, () => {
-        this.clients.delete(chatId);
+        const index = this.clients.findIndex(v => v.chatId === chatId);
+        this.clients.splice(index, 1);
       });
     } catch (e) {
       throw new Error(String(e));
@@ -64,8 +66,9 @@ class SocketController {
     store.set(`dialogs.${chatId}`, newMessages.concat(oldMessages));
   }
 
-  private getPrevious(id: number) {
-    this.clients.get(id)?.send({ content: '0', type: GET_OLD_TYPE });
+  private getPrevious(chatId: number) {
+    const index = this.clients.findIndex(v => v.chatId === chatId);
+    this.clients[index].socket.send({ type: GET_OLD_TYPE, content: '0' });
   }
 }
 
