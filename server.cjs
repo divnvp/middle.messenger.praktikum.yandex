@@ -14,6 +14,8 @@
 // });
 //
 // app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
-const express = require("express");
+const express = require('express');
 const app = express();
-app.use(express.static("./index.html"));
+const PORT = 3000;
+app.use(express.static('./index.html'));
+app.listen(PORT);
