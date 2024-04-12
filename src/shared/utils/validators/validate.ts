@@ -1,34 +1,37 @@
 import { errorMessage, isValueValid } from '@/shared/utils/validators/validators';
-import { getFormProps } from '@/shared/utils/form-props';
 
 export function onValidate(event: Event): void {
   event.preventDefault();
 
   const input = event.target as HTMLInputElement;
   const parent = input.parentElement;
+
   const inputName = input.name;
   const inputValue = input.value;
 
   const child = document.createElement('p');
 
-  if (!isValueValid(inputName, inputValue)) {
-    child.classList.add('validation');
-    child.textContent = errorMessage;
-    const errorText = parent?.querySelector('.validation');
+  if (input.type !== 'submit') {
+    if (!isValueValid(inputName, inputValue)) {
+      child.classList.add('validation');
+      child.textContent = errorMessage;
+      const errorText = parent?.querySelector('.validation');
 
-    if (!errorText) {
-      parent?.appendChild(child);
-    }
-  } else {
-    if (parent?.querySelector('p')) {
-      parent?.removeChild(parent!.querySelector('p')!);
+      if (!errorText) {
+        parent?.appendChild(child);
+      }
+    } else {
+      if (parent?.querySelector('p')) {
+        parent?.removeChild(parent!.querySelector('p')!);
+      }
     }
   }
 }
 
-export function onValidateSubmit(event: Event) {
+export function onValidateSubmit(event: Event): boolean {
   event.preventDefault();
 
+  const flags: string[] = [];
   const form = event.target as HTMLFormElement;
 
   form.querySelectorAll('input').forEach(input => {
@@ -45,12 +48,14 @@ export function onValidateSubmit(event: Event) {
       if (!errorText) {
         parent?.appendChild(child);
       }
+      flags.push('false');
     } else {
       if (errorText) {
         parent?.removeChild(errorText);
       }
+      flags.push('true');
     }
   });
 
-  console.log(getFormProps(form));
+  return !flags.find(v => v === 'false');
 }

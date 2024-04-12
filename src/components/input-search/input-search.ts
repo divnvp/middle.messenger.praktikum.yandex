@@ -1,6 +1,0 @@
-const inputSearchTemplate = `
-<img class='input-search__icon' src='../../icons/search-icon.png' alt='search'>
-<input class='input-search__input' placeholder='Поиск...'>
-`;
-
-export default inputSearchTemplate;

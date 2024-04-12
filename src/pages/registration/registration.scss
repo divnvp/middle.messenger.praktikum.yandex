@@ -1,0 +1,20 @@
+@import '@/shared/variables';
+
+.registration-page {
+  width: 280px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    padding-top: 30px;
+  }
+
+  &__name {
+    margin-bottom: 2rem;
+  }
+}

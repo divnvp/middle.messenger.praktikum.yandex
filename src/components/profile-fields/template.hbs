@@ -1,0 +1,15 @@
+<div class='profile-page__content'>
+  <div class='page-data__avatar'>
+    {{{userAvatar}}}
+  </div>
+
+  <form class='profile-page__fields' id='page-data-fields' onsubmit='{{this.events.submit}}'>
+    {{#each fields}}
+      {{{this}}}
+    {{/each}}
+
+    <div class='profile-actions full-width'>
+      {{{button}}}
+    </div>
+  </form>
+</div>

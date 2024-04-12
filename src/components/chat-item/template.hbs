@@ -1,0 +1,29 @@
+<div class='chat-item' onclick='{{this.events.click}}' data-id={{chat.id}}>
+  <div class='chat-item__line'></div>
+  <div class='chat-item__block'>
+    <div class='chat-item__avatar'>
+      {{#if chat.avatar}}
+        {{{userAvatar}}}
+      {{else}}
+        <div class='avatar-custom'></div>
+      {{/if}}
+    </div>
+    <div class='col chat-item__message'>
+      <div class='chat-item__message'><span
+          class='chat-item__message-name'
+        >{{chat.title}}</span></div>
+      <div class='chat-item__message'><span
+          class='chat-item__message-text'
+        >{{chat.last_message.content}}</span></div>
+    </div>
+
+    <div class='col'>
+      <div class='chat-item__time'><span class=''>{{message.time}}</span></div>
+      <div class='full-width flex-end'>
+        {{#if chat.unread_count}}
+          <div class='chat-item__unread'><span class=''>{{chat.unread_count}}</span></div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,63 +1,93 @@
+import { HOST } from '@/shared/const/api';
 import { Method } from '@/shared/const/method';
 import { queryStringify } from '@/shared/utils/query-string';
 
 type Options = {
   method: Method;
   timeout?: number;
-  data?: Record<string, unknown>;
+  data?: unknown;
   headers?: Record<string, string>;
 };
 
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+export class HTTPTransport {
+  apiUrl: string;
 
-export default class HTTPTransport {
-  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: Method.Get });
+  constructor(apiPath: string) {
+    this.apiUrl = `${HOST}${apiPath}`;
   }
 
-  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: Method.Post });
+  get(url: string, data?: unknown) {
+    return this.request(url, {
+      data,
+      method: Method.Get
+    });
   }
 
-  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: Method.Put });
+  put(url: string, data: unknown) {
+    return this.request(url, {
+      data,
+      method: Method.Put
+    });
   }
 
-  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: Method.Delete });
+  post(url: string, data?: unknown) {
+    return this.request(url, {
+      data,
+      method: Method.Post
+    });
   }
 
-  request(url: string, options: Options = { method: Method.Get }): Promise<XMLHttpRequest> {
-    const { method, headers, data } = options;
+  delete(url: string, data: unknown) {
+    return this.request(url, {
+      data,
+      method: Method.Delete
+    });
+  }
+
+  request = (url: string, options: Options, timeout = 5000): Promise<XMLHttpRequest> => {
+    const { method, data } = options;
 
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-
       if (method === Method.Get && data) {
-        url = `${url}?${queryStringify(data)}`;
+        url = `${this.apiUrl}?${queryStringify(data as Record<string, unknown>)}`;
+      } else {
+        url = `${this.apiUrl}${url}`;
       }
 
-      if (headers) {
-        for (const header of Object.entries(headers)) {
-          xhr.setRequestHeader(header[0], header[1]);
-        }
-      }
-
-      xhr.open(method, url);
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url, true);
 
       xhr.onload = function () {
         resolve(xhr);
       };
 
+      this.setHeaders(data, xhr);
+
+      xhr.responseType = 'json';
+      xhr.withCredentials = true;
+
+      xhr.ontimeout = reject;
       xhr.onabort = reject;
       xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.timeout = timeout;
+
+      if (data instanceof FormData) {
+        xhr.send(data as Document | XMLHttpRequestBodyInit | null | undefined);
+        return;
+      }
 
       if (method === Method.Get || !data) {
         xhr.send();
-      } else {
-        xhr.send(JSON.stringify(data));
+        return;
       }
+
+      xhr.send(JSON.stringify(data));
     });
+  };
+
+  private setHeaders(data: unknown, xhr: XMLHttpRequest) {
+    if (!(data instanceof FormData)) {
+      xhr.setRequestHeader('Content-Type', 'application/json');
+    }
   }
 }

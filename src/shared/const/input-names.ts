@@ -1,9 +1,9 @@
 export enum INPUT_NAMES {
   Login = 'login',
   Password = 'password',
-  PasswordAgain = 'password_again',
-  OldPassword = 'old_password',
-  NewPassword = 'new_password',
+  PasswordAgain = 'passwordAgain',
+  OldPassword = 'oldPassword',
+  NewPassword = 'newPassword',
   Email = 'email',
   Phone = 'phone',
   FirstName = 'first_name',

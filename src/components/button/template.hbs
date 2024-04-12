@@ -1,0 +1,12 @@
+<div>
+  {{#if icon}}
+    <button class='button-with-icon' type='{{type}}'>
+      <img src='{{icon}}' alt='icon' />
+    </button>
+
+  {{else}}
+    <button class='button' type='{{type}}'>
+      {{text}}
+    </button>
+  {{/if}}
+</div>

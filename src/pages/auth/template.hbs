@@ -1,0 +1,22 @@
+<div class='row flexbox main'>
+  <div class='auth auth-page'>
+    <form class='auth-page__content' onsubmit='{{this.events.submit}}'>
+      {{{title}}}
+      {{{text}}}
+
+      {{#each fields}}
+        {{{this}}}
+      {{/each}}
+
+      <div class='auth-page__input'>
+        {{{button}}}
+      </div>
+
+      <div class='auth-page__registration'>
+        {{{link}}}
+      </div>
+    </form>
+  </div>
+
+  <img src='../../background.png' alt='background' />
+</div>
