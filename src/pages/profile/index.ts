@@ -1,3 +1,4 @@
+import AuthController from '@/shared/controllers/auth.controller';
 import Block from '@/shared/utils/block';
 import { Menu } from '@/components/menu';
 import Profile from '@/components/profile';
@@ -15,6 +16,8 @@ export default class ProfilePage extends Block<IProps> {
       menu: new Menu(),
       profile: new Profile()
     });
+
+    AuthController.init();
   }
 
   override render() {

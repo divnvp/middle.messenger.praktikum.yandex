@@ -6,7 +6,7 @@ import { TProp } from '@/shared/models/prop.type';
 interface IProps extends TProp {
   url?: string;
   text: string;
-  onClick?: () => void;
+  onClick?: (e: Event) => void;
   events?: TProp;
 }
 
