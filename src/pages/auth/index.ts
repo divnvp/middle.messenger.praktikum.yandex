@@ -40,7 +40,6 @@ export class AuthPage extends Block<IProps> {
 
             if (onValidateSubmit(event)) {
               AuthController.auth(data);
-              AuthController.getUser();
             }
           }
         },
