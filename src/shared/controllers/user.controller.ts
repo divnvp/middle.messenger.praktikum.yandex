@@ -1,17 +1,21 @@
 import { IPassword } from '@/shared/models/password.interafce';
 import { IUser } from '@/shared/models/user.interface';
-import { onErrorPage } from '@/shared/utils/on-error-page';
+import Router from '@/shared/router/router';
+import { Routes } from '@/shared/const/routes';
 import store from '@/shared/storage/store';
 import { UserAPI } from '@/shared/api/user-api';
 
-export class UserController {
-  private userAPI = new UserAPI();
+class UserController {
+  private readonly userInstanceAPI = new UserAPI();
 
-  async updateData(data: IUser) {
+  async update(userForm: Partial<IUser>) {
     try {
-      const response = await this.userAPI.update(data);
-      onErrorPage(response);
-      store.set('user', JSON.parse(response.response));
+      const response = await this.userInstanceAPI.update(userForm);
+
+      if (response.response) {
+        store.set('user', response.response);
+        Router.go(Routes.Profile);
+      }
     } catch (e) {
       throw new Error(String(e));
     }
@@ -19,32 +23,25 @@ export class UserController {
 
   async changePassword(data: IPassword) {
     try {
-      const response = await this.userAPI.updatePassword(data);
-      onErrorPage(response);
-    } catch (e) {
-      throw new Error(String(e));
-    }
-  }
+      const response = await this.userInstanceAPI.updatePassword(data);
 
-  async updateAvatar() {
-    try {
-      const avatar = document.getElementById('avatar') as HTMLInputElement;
-
-      if (avatar.files && avatar.files.length) {
-        const newAvatar = avatar.files[0];
-        const reader = new FileReader();
-
-        reader.onload = async () => {
-          const formData = new FormData();
-          formData.append('avatar', newAvatar);
-
-          await this.userAPI.updateAvatar(formData);
-        };
-
-        reader.readAsDataURL(newAvatar);
+      if (response) {
+        Router.go(Routes.Profile);
       }
     } catch (e) {
       throw new Error(String(e));
     }
   }
+
+  async changeAvatar(form: FormData) {
+    try {
+      const response = await this.userInstanceAPI.updateAvatar(form);
+
+      store.set('user', response.response);
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
 }
+
+export default new UserController();

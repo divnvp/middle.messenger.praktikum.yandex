@@ -1,7 +1,15 @@
+import { IUser } from '@/shared/models/user.interface';
+
 export interface IChat {
+  id: number;
   title: string;
-  unread_count?: number;
-  created_by?: number;
-  avatar?: unknown;
-  last_message?: string;
+  avatar: string;
+  unread_count: number;
+  last_message?: ILastMessage;
+}
+
+interface ILastMessage {
+  user: IUser;
+  time: string;
+  content: string;
 }

@@ -1,0 +1,17 @@
+<div>
+  <div class="modal-chat__button">
+    {{{button}}}
+  </div>
+
+  {{#if isOpened}}
+    <div class="modal-chat">
+      <div class="modal-chat__event">
+        {{{addUser}}}
+      </div>
+      <div class="modal-chat__event">
+        {{{removeUser}}}
+      </div>
+      {{{deleteChat}}}
+    </div>
+  {{/if}}
+</div>

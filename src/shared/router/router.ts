@@ -1,76 +1,85 @@
-import { Block } from '@/shared/utils/block';
+import Block from '@/shared/utils/block';
 import Route from '@/shared/router/route';
+import { Routes } from '@/shared/const/routes';
 
 const APP_QUERY = '#app';
 
 class Router {
-  private readonly rootQuery: string = APP_QUERY;
-  private currentRoute: Route | null = null;
-  private routes: Route[] = [];
-  private history: History = window.history;
-
   private static __instance: Router;
 
-  constructor() {
+  private _currentRoute: Route | null = null;
+  private routes: Route[] = [];
+  private history = window.history;
+
+  constructor(private readonly rootQuery: string) {
     if (Router.__instance) {
       return Router.__instance;
     }
+    this.routes = [];
     Router.__instance = this;
   }
 
-  use(pathname: string, block: typeof Block): Router {
-    const route = new Route(pathname, block, { rootQuery: this.rootQuery });
+  get currentRoute() {
+    return window.location.pathname;
+  }
+
+  use(pathname: string, block: typeof Block) {
+    const route = new Route(pathname, block, this.rootQuery);
     this.routes.push(route);
     return this;
   }
 
-  start(): void {
+  start() {
     window.onpopstate = (event: PopStateEvent) => {
       const currentTarget = event.currentTarget as Window;
-      this._onRoute(currentTarget.location.pathname);
+      this.onRoute(currentTarget.location.pathname);
     };
-    this._onRoute(window.location.pathname);
+
+    this.onRoute(window.location.pathname);
   }
 
-  go(pathname: string): void {
+  go(pathname: string) {
     this.history.pushState({}, '', pathname);
-    this._onRoute(pathname);
+    this.onRoute(pathname);
   }
 
-  back(): void {
+  back() {
     this.history.back();
   }
 
-  previous() {
-    this.history.go(-1);
-  }
-
-  goCustom(delta: number) {
-    this.history.go(delta);
-  }
-
-  forward(): void {
+  forward() {
     this.history.forward();
   }
 
-  getRoute(pathname: string): Route | undefined {
-    return this.routes.find(route => route.match(pathname));
-  }
-
-  getCurrentRoute() {
-    return window.location.pathname;
-  }
-
-  private _onRoute(pathname: string): void {
+  private onRoute = (pathname: string) => {
     const route = this.getRoute(pathname);
+
     if (!route) {
       return;
     }
-    if (this.currentRoute && this.currentRoute !== route) {
-      this.currentRoute.leave();
+
+    if (this._currentRoute && this._currentRoute !== route) {
+      this._currentRoute.leave();
     }
-    this.currentRoute = route;
+
+    this._currentRoute = route;
+
     route.render();
+  };
+
+  private getRoute = (pathname: string) => {
+    const route = this.routes.find(route => route.match(pathname));
+
+    if (route) {
+      return route;
+    }
+
+    return this.onErrorPage();
+  };
+
+  private onErrorPage() {
+    this.go(Routes.Error400);
+    return this.routes.find(el => el.match(Routes.Error400));
   }
 }
-export default Router;
+export default new Router(APP_QUERY);

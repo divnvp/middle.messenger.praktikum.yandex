@@ -1,48 +1,55 @@
-import { Block } from '@/shared/utils/block';
-import { isEquals } from '@/shared/utils/custom-utils/is-equals';
-import { RouteProp } from '@/shared/models/prop.interface';
+import Block from '@/shared/utils/block';
+import isEquals from '@/shared/utils/custom-utils/is-equals';
+import { PlainObject } from '@/shared/models/plain-object.type';
 
 class Route {
-  private readonly blockClass: typeof Block;
-  private pathname: string;
+  private readonly blockClass!: typeof Block;
+  private pathName?: string;
+  private readonly query!: string;
   private block: Block | null = null;
-  private props: RouteProp;
 
-  constructor(pathname: string, view: typeof Block, props: RouteProp) {
-    this.pathname = pathname;
-    this.blockClass = view;
-    this.props = props;
+  constructor(pathName: string, componentClass: typeof Block, query: string) {
+    this.pathName = pathName;
+    this.blockClass = componentClass;
+    this.query = query;
   }
 
   navigate(pathname: string): void {
     if (this.match(pathname)) {
-      this.pathname = pathname;
+      this.pathName = pathname;
       this.render();
     }
   }
 
   getPath(): string {
-    return this.pathname;
+    return <string>this.pathName;
   }
 
-  leave(): void {
+  leave() {
     if (this.block) {
-      this.block.hide();
+      this.block = null;
     }
   }
 
-  match(pathname: string): boolean {
-    return isEquals(pathname, this.pathname);
+  match(pathname: string) {
+    return isEquals(pathname as unknown as PlainObject, this.pathName as unknown as PlainObject);
   }
 
-  render(): void {
-    const root = document.querySelector(this.props.rootQuery);
-    if (root) {
-      root.innerHTML = '';
-      this.block = new this.blockClass();
-      this.block!.dispatchComponentDidMount();
-      root.append(this.block!.getElement() as string | Node);
+  render() {
+    const root = document.querySelector(this.query);
+
+    if (!this.block) {
+      this.block = new this.blockClass({});
+
+      if (root) {
+        root.innerHTML = '';
+        root.append(this.block.getContent()!);
+        return root;
+      }
+
+      return null;
     }
+    return null;
   }
 }
 

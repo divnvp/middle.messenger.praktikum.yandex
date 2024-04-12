@@ -1,0 +1,23 @@
+<div>
+
+<div class="input {{className}}">
+  <input type={{type}} name={{name}}
+    {{#if hint}}
+         placeholder="{{hint}}" {{/if}}
+    {{#if autocomplete}}
+         autocomplete="{{autocomplete}}" {{/if}}
+    {{#if value}}
+         value="{{value}}" {{/if}}
+    {{#if onChange}}
+         onchange={{onChange}} {{/if}}
+    {{#if onFocus}}
+         onfocus={{onFocus}} {{/if}}
+    {{#if onblur}}
+         onblur={{onBlur}} {{/if}}
+    {{#if oninput}}
+         oninput={{onInput}} {{/if}}
+  >
+
+</div>
+<span class="input-error hidden">Некорректное значение</span>
+</div>

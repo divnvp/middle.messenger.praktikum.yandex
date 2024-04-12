@@ -1,0 +1,19 @@
+<div class='row flexbox main'>
+  <form class='registration-page'>
+    <div class='registration-page__content' onsubmit='{{this.events.submit}}'>
+      <div class="registration-page__name">
+        {{{title}}}
+      </div>
+
+      {{#each fields}}
+        {{{this}}}
+      {{/each}}
+    </div>
+    <div class='registration-page__title'>
+      {{{button}}}
+    </div>
+    {{{link}}}
+  </form>
+
+  <img src='../../background.png' alt='background' />
+</div>

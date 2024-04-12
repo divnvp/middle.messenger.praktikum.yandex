@@ -1,63 +1,107 @@
 import { AuthAPI } from '@/shared/api/auth-api';
-import { getFormProps } from '@/shared/utils/form-props';
 import { IAuth } from '@/shared/models/auth.interface';
-import { onErrorPage } from '@/shared/utils/on-error-page';
+import { isUserInSystemOrError } from '@/shared/utils/is-user-in-system-or-error';
+import { IUser } from '@/shared/models/user.interface';
 import Router from '@/shared/router/router';
 import { Routes } from '@/shared/const/routes';
+import SocketController from '@/shared/controllers/socket.controller';
 import store from '@/shared/storage/store';
 
-export class AuthController {
-  private authAPI = new AuthAPI();
-  private router = new Router();
+class AuthController {
+  private readonly authInstanceAPI = new AuthAPI();
 
-  async init() {
-    this.getUser().then(() => {
-      const user = this.getUserFromStorage();
-
-      if (user) {
-        if (
-          this.router.getCurrentRoute() === Routes.Auth ||
-          this.router.getCurrentRoute() === Routes.Registration
-        ) {
-          this.router.go(Routes.Messenger);
-        }
-      } else {
-        this.router.go(Routes.Auth);
-      }
-    });
+  get isUserNotAuthorize(): boolean {
+    return Router.currentRoute === Routes.Auth || Router.currentRoute === Routes.Registration;
   }
 
-  getUserFromStorage() {
-    return store.getState().user;
+  get isPageError(): boolean {
+    return Router.currentRoute === Routes.Error400 || Router.currentRoute === Routes.Error500;
+  }
+
+  get isUserExists() {
+    return Object.values(store.getState().user).length;
+  }
+
+  async init() {
+    const currentUser = store.getState().user;
+    const isUserExists = Object.values(currentUser).length;
+
+    try {
+      if (!isUserExists) {
+        const response = await this.getUser();
+
+        if (response) {
+          const user = store.getState().user;
+          if (!user.reason) {
+            if (this.isPageError || this.isUserNotAuthorize) {
+              Router.go(Routes.ChatPanel);
+            }
+          } else {
+            Router.go(Routes.Auth);
+          }
+        }
+      }
+    } catch (e) {
+      Router.go(Routes.Auth);
+    }
+  }
+
+  async auth(data: IAuth) {
+    try {
+      const response = await this.authInstanceAPI.signIn(data);
+
+      if (this.isStatusSuccess(response)) {
+        Router.go(Routes.ChatPanel);
+      } else {
+        Router.go(Routes.Auth);
+      }
+
+      return response;
+    } catch (e) {
+      isUserInSystemOrError(e);
+    }
+
+    return null;
+  }
+
+  async getUser() {
+    try {
+      const response = await this.authInstanceAPI.request();
+      const user = response.response;
+      store.set('user', user);
+
+      return user;
+    } catch (e) {
+      throw new Error(e as string);
+    }
+  }
+
+  async onRegistration(data: IUser) {
+    try {
+      const response = await this.authInstanceAPI.create(data);
+      if (this.isStatusSuccess(response)) {
+        Router.go(Routes.ChatPanel);
+      } else {
+        Router.go(Routes.Registration);
+      }
+    } catch (e) {
+      isUserInSystemOrError(e);
+    }
   }
 
   async logout() {
     try {
-      const response = await this.authAPI.logout();
-      onErrorPage(response);
+      SocketController.socketRemove();
+      await this.authInstanceAPI.logout();
+      Router.go(Routes.Auth);
     } catch (e) {
       throw new Error(String(e));
     }
   }
 
-  async login(data: HTMLFormElement) {
-    try {
-      const signed = await this.authAPI.signIn(getFormProps(data) as unknown as IAuth);
-      onErrorPage(signed);
-      await this.init();
-    } catch (e) {
-      throw new Error(String(e));
-    }
-  }
-
-  private async getUser() {
-    const response = await this.authAPI.request();
-    const user = response.response;
-
-    store.set('user', JSON.parse(user));
-
-    onErrorPage(response);
-
-    return user;
+  private isStatusSuccess(response: XMLHttpRequest) {
+    return response.status >= 200 || response.status <= 300;
   }
 }
+
+export default new AuthController();

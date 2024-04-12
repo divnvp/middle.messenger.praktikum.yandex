@@ -1,84 +1,26 @@
-import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
-import { Block } from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import changePasswordTemplate from '@/pages/change-password/template';
-import { getFormProps } from '@/shared/utils/form-props';
-import { InputField } from '@/components/input-field';
-import { IPassword } from '@/shared/models/password.interafce';
-import { Link } from '@/components/link';
+import AuthController from '@/shared/controllers/auth.controller';
+import Block from '@/shared/utils/block';
+import { ChangePasswordComponent } from '@/components/change-password';
 import { Menu } from '@/components/menu';
-import { ResourcesController } from '@/shared/controllers/resources.controller';
-import { Routes } from '@/shared/const/routes';
-import { UserController } from '@/shared/controllers/user.controller';
-import { v4 as uuid } from 'uuid';
+import template from './template.hbs?raw';
+import { TProp } from '@/shared/models/prop.type';
 
-const userController = new UserController();
-const resourcesController = new ResourcesController();
+interface IProps extends TProp {
+  menu: Menu;
+  changePassword: ChangePasswordComponent;
+}
 
-export class ChangePasswordPage extends Block {
+export default class ChangePasswordPage extends Block<IProps> {
   constructor() {
-    super('form', {
-      events: {
-        submit: (e: Event) => {
-          userController.updateAvatar();
-
-          if (onValidateSubmit(e)) {
-            const data = e.target as HTMLFormElement;
-            userController.changePassword({
-              newPassword: (getFormProps(data) as unknown as IPassword).newPassword,
-              oldPassword: (getFormProps(data) as unknown as IPassword).oldPassword
-            });
-          }
-        }
-      },
-      src: resourcesController.getUserAvatarString(),
-      attr: {
-        class: 'profile-page'
-      },
-      menu: new Menu('div', {
-        attr: {
-          class: 'col menu'
-        }
-      }),
-      fields: [
-        new InputField('div', {
-          events: {
-            blur: { event: onValidate, querySelector: 'input' }
-          },
-          name: 'oldPassword',
-          title: 'Старый пароль',
-          id: uuid(),
-          type: 'password'
-        }),
-        new InputField('div', {
-          events: {
-            blur: { event: onValidate, querySelector: 'input' }
-          },
-          name: 'newPassword',
-          title: 'Новый пароль',
-          id: uuid(),
-          type: 'password'
-        }),
-        new InputField('div', {
-          events: {
-            blur: { event: onValidate, querySelector: 'input' }
-          },
-          name: 'passwordAgain',
-          title: 'Повторите пароль',
-          id: uuid(),
-          type: 'password'
-        })
-      ],
-      link: new Link('div', { page: Routes.Settings, text: 'Назад' }),
-      button: new Button('div', {
-        attr: { class: 'profile-page__button' },
-        type: 'submit',
-        text: 'Сохранить'
-      })
+    super({
+      menu: new Menu(),
+      changePassword: new ChangePasswordComponent()
     });
+
+    AuthController.init();
   }
 
   override render() {
-    return this.compile(changePasswordTemplate);
+    return this.compile(template, this.props);
   }
 }

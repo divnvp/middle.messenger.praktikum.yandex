@@ -1,32 +1,14 @@
-import { ChatApi } from '@/shared/api/chat-api';
+import { ChatsAPI } from '@/shared/api/chat-api';
 import { IChat } from '@/shared/models/chat.interface';
-import { onErrorPage } from '@/shared/utils/on-error-page';
+import SocketController from '@/shared/controllers/socket.controller';
 import store from '@/shared/storage/store';
 
-export class ChatController {
-  private chatAPI = new ChatApi();
+class ChatsController {
+  private readonly api = new ChatsAPI();
 
-  async init() {
-    const chats = store.getState().chats;
-
-    if (!chats) {
-      await this.getChats();
-    }
-  }
-
-  async getChats() {
-    const response = await this.chatAPI.request();
-
-    onErrorPage(response);
-    store.set('chats', JSON.parse(response.response));
-
-    return response.response;
-  }
-
-  async createChat(title: IChat) {
+  async create(title: string) {
     try {
-      const response = await this.chatAPI.create(title);
-      onErrorPage(response);
+      await this.api.create(title);
 
       await this.getChats();
     } catch (e) {
@@ -34,7 +16,60 @@ export class ChatController {
     }
   }
 
-  getChatsFromStore() {
-    return store.getState().chats;
+  async getChats() {
+    try {
+      const response = await this.api.request();
+      const chats = response.response;
+
+      chats.map(async (chat: IChat) => {
+        const token = await this.getToken(chat.id);
+        await SocketController.open(token as string, chat.id);
+      });
+
+      store.set('chats', chats);
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
+
+  async addUser(chatId: number, userId: number) {
+    try {
+      await this.api.addUsersToChat(userId, chatId);
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
+
+  async deleteUser(chatId: number, userId: number) {
+    try {
+      await this.api.removeUsersFromChat(userId, chatId);
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
+
+  async delete(id: number) {
+    try {
+      const response = await this.api.remove(id);
+
+      if (response) {
+        store.set('currentChat', null);
+      }
+
+      await this.getChats();
+    } catch (e) {
+      throw new Error(String(e));
+    }
+  }
+
+  async getToken(id: number) {
+    const response = await this.api.getToken(id);
+    return response.response.token;
+  }
+
+  public selectChat(chat: IChat) {
+    store.set('currentChat', chat);
   }
 }
+
+export default new ChatsController();

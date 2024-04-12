@@ -1,11 +1,11 @@
 export enum Routes {
   Auth = '/',
+  ChatPanel = '/chat-panel',
   Registration = '/sign-up',
-  Settings = '/settings',
+  Profile = '/profile',
+  ChangeProfileData = '/change-user-data',
   ChangePassword = '/change-password',
-  ChangeUserData = '/change-user-data',
   Messenger = '/messenger',
   Error400 = '/error-400',
-  Error500 = '/error-500',
-  Back = 'back'
+  Error500 = '/error-500'
 }

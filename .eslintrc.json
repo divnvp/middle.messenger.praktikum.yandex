@@ -24,20 +24,6 @@
         "max-len": ["error", 120],
         "key-spacing": ["error", { "afterColon": true }],
         "arrow-parens": ["error", "as-needed"],
-        "operator-linebreak": [
-          "error",
-          "after",
-          {
-            "overrides": {
-              "?": "after",
-              ":": "after",
-              "&": "after",
-              "&&": "after",
-              "|": "after",
-              "||": "after"
-            }
-          }
-        ],
         "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
         "arrow-body-style": ["error", "as-needed"],
         "prefer-arrow-callback": "error",

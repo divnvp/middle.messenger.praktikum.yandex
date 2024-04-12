@@ -37,13 +37,6 @@ button {
   gap: 100px;
 }
 
-.avatar {
-  background: $gray-light-color;
-  height: 47px;
-  width: 47px;
-  border-radius: 50%;
-}
-
 .col {
   display: flex;
   flex-direction: column;
@@ -88,7 +81,7 @@ button {
   }
 
   &__button {
-    width: 73%;
+    width: 25%;
   }
 }
 
@@ -99,6 +92,9 @@ button {
 
   &__avatar {
     margin-bottom: 1rem;
+
+    max-height: 47px;
+    max-width: 47px;
   }
 }
 
@@ -146,19 +142,20 @@ button {
     width: 20px;
     height: 20px;
 
+    margin-top: .5rem;
     margin-left: 10px;
     position: absolute;
   }
 
   &__input {
+    display: flex;
     padding: 10px 20px 10px 30px;
 
     border: none;
     background-color: $gray-light-color;
 
-    width: 100%;
-
     border-radius: 30px;
+    width: 80%;
 
     &:focus {
       border: none;
@@ -198,7 +195,6 @@ button {
 }
 
 .container {
-  width: 240px;
   margin: 0 auto;
 
   &__icon {
@@ -284,6 +280,9 @@ button {
   display: flex;
   flex-direction: row;
 
+  justify-content: end;
+  margin: 0 1rem;
+
   &_in {
     width: auto;
     max-width: 50%;
@@ -295,7 +294,7 @@ button {
     font: $font-small;
 
     &__time {
-      margin-top: 1rem;
+      margin-top: 2rem;
 
       font: $font-nano;
       color: $text-light-color;
@@ -318,48 +317,13 @@ button {
 .main {
   height: 100%;
   width: 100%;
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
 }
 
-.chat-message {
-  width: 60%;
-  height: 100%;
-  background-color: $gray-light-color;
-
+.flexbox {
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   justify-content: center;
-
-  &__header {
-    flex-shrink: 0;
-  }
-
-  &__main {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    gap: 10rem;
-
-    overflow: auto;
-    margin: 1rem;
-
-    &_bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-
-      margin-top: auto;
-    }
-  }
-
-  &__footer {
-    flex-shrink: 0;
-  }
 }
 
 .profile-data {
@@ -376,23 +340,27 @@ button {
   position: relative;
   display: block;
 
-  width: 150px;
-  height: 150px;
-
-  border-radius: 50%;
   margin-bottom: 2rem;
 
   overflow: hidden;
   cursor: pointer;
+}
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
+.chat-message-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    object-fit: cover;
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 2rem;
   }
 }

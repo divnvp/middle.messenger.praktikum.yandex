@@ -1,35 +1,41 @@
-import HTTPTransport from '@/shared/services/http';
-import { IChat } from '@/shared/models/chat.interface';
+import { HTTPTransport } from '@/shared/services/http';
 import { IChatApi } from '@/shared/models/api/chat-api.interface';
 
-const chatAPIInstance = new HTTPTransport('/chats');
+export class ChatsAPI implements IChatApi {
+  private chatAPIInstance = new HTTPTransport('/chats');
 
-export class ChatApi implements IChatApi {
+  create(title: string) {
+    return this.chatAPIInstance.post('', { title });
+  }
+
+  remove(id: number) {
+    return this.chatAPIInstance.delete('', { chatId: id });
+  }
+
   request() {
-    return chatAPIInstance.get('');
+    return this.chatAPIInstance.get('');
   }
 
-  getChatFiles(chatId: number) {
-    return chatAPIInstance.get(`/${chatId}/files`);
+  addUsersToChat(users: number, id: number) {
+    return this.chatAPIInstance.put('/users', { users: [users], chatId: id });
   }
 
-  getChatArchive() {
-    return chatAPIInstance.get('/archive');
+  getChatUsers(id: number) {
+    return this.chatAPIInstance.get(`/${id}/users`);
   }
 
-  create(data: IChat) {
-    return chatAPIInstance.post('', { data });
+  removeUsersFromChat(users: number, id: number) {
+    return this.chatAPIInstance.delete('/users', { users: [users], chatId: id });
   }
 
-  createChatArchive(chatId: number) {
-    return chatAPIInstance.post('/archive', { data: { archiveChatRequest: { chatId } } });
+  getToken(id: number) {
+    return this.chatAPIInstance.post(`/token/${id}`);
   }
 
-  unArchiveChat(chatId: number) {
-    return chatAPIInstance.post('/archive', { data: { unarchiveChatRequest: { chatId } } });
-  }
-
-  remove(chatId: number) {
-    return chatAPIInstance.delete('', { data: { chatId } });
+  updateChatAvatar(chatId: number, avatar: unknown) {
+    console.log(avatar);
+    return this.chatAPIInstance.put('/avatar', { chatId, avatar });
   }
 }
+
+export default new ChatsAPI();

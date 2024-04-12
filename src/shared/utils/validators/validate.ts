@@ -5,22 +5,25 @@ export function onValidate(event: Event): void {
 
   const input = event.target as HTMLInputElement;
   const parent = input.parentElement;
+
   const inputName = input.name;
   const inputValue = input.value;
 
   const child = document.createElement('p');
 
-  if (!isValueValid(inputName, inputValue)) {
-    child.classList.add('validation');
-    child.textContent = errorMessage;
-    const errorText = parent?.querySelector('.validation');
+  if (input.type !== 'submit') {
+    if (!isValueValid(inputName, inputValue)) {
+      child.classList.add('validation');
+      child.textContent = errorMessage;
+      const errorText = parent?.querySelector('.validation');
 
-    if (!errorText) {
-      parent?.appendChild(child);
-    }
-  } else {
-    if (parent?.querySelector('p')) {
-      parent?.removeChild(parent!.querySelector('p')!);
+      if (!errorText) {
+        parent?.appendChild(child);
+      }
+    } else {
+      if (parent?.querySelector('p')) {
+        parent?.removeChild(parent!.querySelector('p')!);
+      }
     }
   }
 }
@@ -28,7 +31,7 @@ export function onValidate(event: Event): void {
 export function onValidateSubmit(event: Event): boolean {
   event.preventDefault();
 
-  let flag = false;
+  const flags: string[] = [];
   const form = event.target as HTMLFormElement;
 
   form.querySelectorAll('input').forEach(input => {
@@ -44,17 +47,15 @@ export function onValidateSubmit(event: Event): boolean {
     if (!isValueValid(input.name, input.value)) {
       if (!errorText) {
         parent?.appendChild(child);
-        flag = false;
       }
-      flag = false;
+      flags.push('false');
     } else {
       if (errorText) {
         parent?.removeChild(errorText);
-        flag = true;
       }
-      flag = true;
+      flags.push('true');
     }
   });
 
-  return flag;
+  return !flags.find(v => v === 'false');
 }
