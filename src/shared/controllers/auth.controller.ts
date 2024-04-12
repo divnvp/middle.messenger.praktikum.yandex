@@ -18,10 +18,6 @@ class AuthController {
     return Router.currentRoute === Routes.Error400 || Router.currentRoute === Routes.Error500;
   }
 
-  get isUserExists() {
-    return Object.values(store.getState().user).length;
-  }
-
   async init() {
     const currentUser = store.getState().user;
     const isUserExists = Object.values(currentUser).length;

@@ -17,7 +17,7 @@ class Block<P extends TProp = NonNullable<unknown>> {
   private htmlElement?: HTMLElement;
 
   protected props: P;
-  public child: Record<string, Block | Block[]>;
+  child: Record<string, Block | Block[]>;
 
   get element() {
     return this.htmlElement;

@@ -65,9 +65,7 @@ export class AuthPage extends Block<IProps> {
       })
     });
 
-    if (AuthController.isUserExists) {
-      AuthController.logout();
-    }
+    AuthController.init();
   }
 
   override init() {

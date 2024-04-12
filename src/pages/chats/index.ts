@@ -1,4 +1,5 @@
 import './chat.scss';
+import AuthController from '@/shared/controllers/auth.controller';
 import Block from '@/shared/utils/block';
 import ChatController from '@/shared/controllers/chat.controller';
 import { ChatList } from '@/components/chat-list';
@@ -20,6 +21,7 @@ export default class ChatPage extends Block<IProps> {
       chatMessage: new ChatMessage()
     });
 
+    AuthController.init();
     ChatController.getChats();
   }
 

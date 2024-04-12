@@ -29,7 +29,9 @@ class SocketController {
   }
 
   socketRemove() {
-    [...this.clients.values()].forEach(ws => ws.close());
+    if (this.clients.size) {
+      [...this.clients.values()].forEach(ws => ws.close());
+    }
   }
 
   private async connectToSocket(chatId: number, userId: number, token: string) {

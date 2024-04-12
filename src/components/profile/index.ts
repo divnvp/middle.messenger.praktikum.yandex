@@ -47,9 +47,9 @@ export default class Profile extends Block<IProp> {
         }),
         new Link({
           text: 'Выйти',
-          onClick: () => {
+          onClick: (e: Event) => {
+            e.preventDefault();
             AuthController.logout();
-            Router.go(Routes.Auth);
           }
         })
       ]
