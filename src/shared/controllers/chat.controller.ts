@@ -4,11 +4,11 @@ import SocketController from '@/shared/controllers/socket.controller';
 import store from '@/shared/storage/store';
 
 class ChatsController {
-  private readonly api = new ChatsAPI();
+  private readonly chatsInstanceAPI = new ChatsAPI();
 
   async create(title: string) {
     try {
-      await this.api.create(title);
+      await this.chatsInstanceAPI.create(title);
 
       await this.getChats();
     } catch (e) {
@@ -18,7 +18,7 @@ class ChatsController {
 
   async getChats() {
     try {
-      const response = await this.api.request();
+      const response = await this.chatsInstanceAPI.request();
       const chats = response.response;
 
       chats.map(async (chat: IChat) => {
@@ -34,7 +34,7 @@ class ChatsController {
 
   async addUser(chatId: number, userId: number) {
     try {
-      await this.api.addUsersToChat(userId, chatId);
+      await this.chatsInstanceAPI.addUsersToChat(userId, chatId);
     } catch (e) {
       throw new Error(String(e));
     }
@@ -42,7 +42,7 @@ class ChatsController {
 
   async deleteUser(chatId: number, userId: number) {
     try {
-      await this.api.removeUsersFromChat(userId, chatId);
+      await this.chatsInstanceAPI.removeUsersFromChat(userId, chatId);
     } catch (e) {
       throw new Error(String(e));
     }
@@ -50,7 +50,7 @@ class ChatsController {
 
   async delete(id: number) {
     try {
-      const response = await this.api.remove(id);
+      const response = await this.chatsInstanceAPI.remove(id);
 
       if (response) {
         store.set('currentChat', null);
@@ -63,13 +63,13 @@ class ChatsController {
   }
 
   async getToken(id: number) {
-    const response = await this.api.getToken(id);
+    const response = await this.chatsInstanceAPI.getToken(id);
     return response.response.token;
   }
 
   async getChatUsers(id: number) {
     try {
-      const response = await this.api.getChatUsers(id);
+      const response = await this.chatsInstanceAPI.getChatUsers(id);
       store.set('currentChatUsers', response.response);
     } catch (e) {
       throw new Error(String(e));

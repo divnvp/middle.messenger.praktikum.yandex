@@ -3,7 +3,7 @@ import EventBus from '@/shared/utils/event-bus';
 
 export default class Socket extends EventBus {
   private interval: number = 0;
-  private readonly timeout = 2 * 1000;
+  private readonly timeout = 5 * 1000;
   private readonly socket?: WebSocket;
 
   constructor(private path: string) {
@@ -23,7 +23,11 @@ export default class Socket extends EventBus {
     });
   }
 
-  private send(data: Record<string, SocketHeartbeatEnum>) {
+  close() {
+    this.socket?.close();
+  }
+
+  send(data: unknown) {
     if (this.socket) {
       this.socket.send(JSON.stringify(data));
     } else {

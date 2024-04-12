@@ -21,7 +21,7 @@ export default class ChatPage extends Block<IProps> {
       chatMessage: new ChatMessage()
     });
 
-    AuthController.init();
+    AuthController.start();
     ChatController.getChats();
   }
 

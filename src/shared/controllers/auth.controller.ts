@@ -18,7 +18,7 @@ class AuthController {
     return Router.currentRoute === Routes.Error400 || Router.currentRoute === Routes.Error500;
   }
 
-  async init() {
+  async start() {
     const currentUser = store.getState().user;
     const isUserExists = Object.values(currentUser).length;
 
@@ -51,13 +51,22 @@ class AuthController {
       } else {
         Router.go(Routes.Auth);
       }
-
-      return response;
     } catch (e) {
       isUserInSystemOrError(e);
     }
+  }
 
-    return null;
+  async register(data: IUser) {
+    try {
+      const response = await this.authInstanceAPI.create(data);
+      if (this.isStatusSuccess(response)) {
+        Router.go(Routes.ChatPanel);
+      } else {
+        Router.go(Routes.Registration);
+      }
+    } catch (e) {
+      isUserInSystemOrError(e);
+    }
   }
 
   async getUser() {
@@ -68,20 +77,7 @@ class AuthController {
 
       return user;
     } catch (e) {
-      throw new Error(e as string);
-    }
-  }
-
-  async onRegistration(data: IUser) {
-    try {
-      const response = await this.authInstanceAPI.create(data);
-      if (this.isStatusSuccess(response)) {
-        Router.go(Routes.ChatPanel);
-      } else {
-        Router.go(Routes.Registration);
-      }
-    } catch (e) {
-      isUserInSystemOrError(e);
+      throw new Error(String(e));
     }
   }
 

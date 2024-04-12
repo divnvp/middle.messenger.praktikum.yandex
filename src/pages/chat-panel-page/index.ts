@@ -26,7 +26,7 @@ class ChatPanelPage extends Block<IProp> {
       menu: new Menu()
     });
 
-    AuthController.init().then(() => {
+    AuthController.start().then(() => {
       AuthController.getUser();
     });
     ChatController.getChats();
