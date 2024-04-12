@@ -10,6 +10,7 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', {
     root: path.join(__dirname, 'dist')
   });
+  res.status(200);
 });
 
 app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
