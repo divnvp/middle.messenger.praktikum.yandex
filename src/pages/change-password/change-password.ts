@@ -17,7 +17,7 @@ export default class ChangePasswordPage extends Block<IProps> {
       changePassword: new ChangePasswordComponent()
     });
 
-    AuthController.init();
+    AuthController.start();
   }
 
   override render() {

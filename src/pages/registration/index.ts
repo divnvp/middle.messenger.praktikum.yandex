@@ -75,7 +75,7 @@ export class RegistrationPage extends Block<IProp> {
             const data = getFormProps(event.target as HTMLFormElement) as unknown as IUser;
 
             if (onValidateSubmit(event)) {
-              AuthController.onRegistration(data);
+              AuthController.register(data);
             }
           }
         },

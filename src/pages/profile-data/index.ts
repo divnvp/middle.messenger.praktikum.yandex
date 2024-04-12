@@ -27,7 +27,7 @@ export default class ProfileDataPage extends Block<IProps> {
       })
     });
 
-    AuthController.init();
+    AuthController.start();
   }
 
   override render() {
