@@ -26,21 +26,21 @@ Netlify: https://soft-daffodil-147528.netlify.app/
 
 ### На сверстанные макеты:
 
-Страница авторизации: http://localhost:3000/pages/auth/auth.html
+Страница авторизации: https://soft-daffodil-147528.netlify.app/
 
-Страница регистрации: http://localhost:3000/pages/registration/registration.html
+Страница регистрации: https://soft-daffodil-147528.netlify.app/sign-up
 
-Страница чатов: http://localhost:3000/pages/chats/chat.html
+Страница чатов: https://soft-daffodil-147528.netlify.app/chat-panel
 
-Страница профиля: http://localhost:3000/profile
+Страница профиля: https://soft-daffodil-147528.netlify.app/profile
 
-Страница смены пароля: http://localhost:3000/pages/change-password/change-password.html
+Страница смены пароля: https://soft-daffodil-147528.netlify.app/change-password
 
-Страница смены данных: http://localhost:3000/pages/profile-data/profile-data.html
+Страница смены данных: https://soft-daffodil-147528.netlify.app/settings
 
-Страница 500: http://localhost:3000/pages/error-500/error-500.html
+Страница 500: https://soft-daffodil-147528.netlify.app/error-500
 
-Страница 404: http://localhost:3000/pages/error-4xx/error-4xx.html
+Страница 404: https://soft-daffodil-147528.netlify.app/error-4xx
 
 ## Примеры использования
 
@@ -75,3 +75,6 @@ https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/4
 
 https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/5
 
+## Ссылка на pull-request Спринт 3
+
+https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/6
