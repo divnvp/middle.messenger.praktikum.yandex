@@ -10,8 +10,8 @@
     "build": "vite build",
     "start": "vite build && node server.js",
     "preview": "vite preview",
-    "test": "mocha -r jsdom-global/register",
-    "lint": "eslint \"**/*.{ts,tsx}\" --fix"
+    "lint": "eslint \"**/*.{ts,tsx}\" --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/chai": "^4.3.14",
