@@ -1,4 +1,5 @@
 import { Indexed } from '@/shared/models/indexed.type';
+import { IndexedOrUnknown } from '@/shared/models/types';
 
 function merge(lhs: Indexed, rhs: Indexed): Indexed {
   for (const p in rhs) {
@@ -20,7 +21,7 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return lhs;
 }
 
-function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
+function set(object: IndexedOrUnknown, path: string, value: unknown): IndexedOrUnknown {
   if (typeof object !== 'object' || object === null) {
     return object;
   }

@@ -1,3 +1,4 @@
+import { DocumentOrRequestBodyOrNull } from '@/shared/models/types';
 import { HOST } from '@/shared/const/api';
 import { Method } from '@/shared/const/method';
 import { queryStringify } from '@/shared/utils/query-string';
@@ -72,7 +73,7 @@ export class HTTPTransport {
       xhr.timeout = timeout;
 
       if (data instanceof FormData) {
-        xhr.send(data as Document | XMLHttpRequestBodyInit | null | undefined);
+        xhr.send(data as DocumentOrRequestBodyOrNull);
         return;
       }
 

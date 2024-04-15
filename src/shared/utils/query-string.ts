@@ -1,6 +1,6 @@
 import { isArrayOrObject } from '@/shared/utils/custom-utils/is-array-or-object';
 import { isPlainObject } from '@/shared/utils/custom-utils/is-plain-object';
-import { PlainObject } from '@/shared/models/plain-object.type';
+import { PlainObjectOrArray } from '@/shared/models/types';
 
 export function queryStringify(data: Record<string, unknown>) {
   if (!isPlainObject(data)) {
@@ -12,7 +12,7 @@ export function queryStringify(data: Record<string, unknown>) {
     .join('&');
 }
 
-function getParams(data: PlainObject | [], parentKey?: string) {
+function getParams(data: PlainObjectOrArray, parentKey?: string) {
   const result: [string, string][] = [];
 
   for (const [key, value] of Object.entries(data)) {

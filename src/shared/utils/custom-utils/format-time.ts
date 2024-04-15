@@ -1,4 +1,4 @@
-export function formatTime(time: string | undefined): string {
+export function formatTime(time?: string): string {
   if (time) {
     return new Date(time).toLocaleTimeString().substring(0, 5);
   }

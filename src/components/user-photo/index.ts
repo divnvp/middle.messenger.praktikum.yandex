@@ -29,7 +29,7 @@ export class UserPhoto extends Block<IProps> {
 
   override init() {
     this.child['changeAvatar'] = new ChangeAvatar({
-      photoUrl: (this.props as { user: { avatar: string | undefined } }).user?.avatar ?? undefined
+      photoUrl: (this.props as { user: { avatar?: string } }).user?.avatar ?? undefined
     });
 
     this.child['input'] = new InputField({
@@ -47,7 +47,7 @@ export class UserPhoto extends Block<IProps> {
 
   override componentDidUpdate(): boolean {
     this.child['changeAvatar'] = new ChangeAvatar({
-      photoUrl: (this.props as { user: { avatar: string | undefined } }).user?.avatar ?? undefined
+      photoUrl: (this.props as { user: { avatar?: string } }).user?.avatar ?? undefined
     });
     return true;
   }

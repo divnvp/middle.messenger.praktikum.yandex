@@ -3,6 +3,7 @@ import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate
 import AuthController from '@/shared/controllers/auth.controller';
 import Block from '@/shared/utils/block';
 import { Button } from '@/components/button';
+import { EventOrRecord } from '@/shared/models/types';
 import { getFormProps } from '@/shared/utils/form-props';
 import { IAuth } from '@/shared/models/auth.interface';
 import { InputWithIconField } from '@/components/input-field-with-icon';
@@ -21,7 +22,7 @@ interface IProps extends TProp {
   button: Button;
   link?: Link;
   inputs?: InputWithIconField[];
-  events: IEvents | Record<string, () => void>;
+  events: EventOrRecord<IEvents>;
 }
 
 interface IEvents {

@@ -1,5 +1,6 @@
 import Block from '@/shared/utils/block';
 import Route from '@/shared/router/route';
+import { RouteOrNull } from '@/shared/models/types';
 import { Routes } from '@/shared/const/routes';
 
 const APP_QUERY = '#app';
@@ -7,7 +8,7 @@ const APP_QUERY = '#app';
 class Router {
   private static __instance: Router;
 
-  private _currentRoute: Route | null = null;
+  private _currentRoute: RouteOrNull = null;
   private routes: Route[] = [];
   private history = window.history;
 

@@ -3,6 +3,7 @@ import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate
 import AuthController from '@/shared/controllers/auth.controller';
 import Block from '@/shared/utils/block';
 import { Button } from '@/components/button';
+import { EventOrRecord } from '@/shared/models/types';
 import { getFormProps } from '@/shared/utils/form-props';
 import { InputField } from '@/components/input-field';
 import { IUser } from '@/shared/models/user.interface';
@@ -19,7 +20,7 @@ interface IProp extends TProp {
   button: Button;
   link?: Link;
   fields?: InputField[];
-  events: IEvents | Record<string, () => void>;
+  events: EventOrRecord<IEvents>;
 }
 
 interface IEvents {
