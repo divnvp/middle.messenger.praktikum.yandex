@@ -1,0 +1,40 @@
+@import '@/shared/variables';
+
+.modal-chat {
+  background-color: $background-color;
+  border-radius: 21px;
+  width: 500px;
+
+  margin-left: -400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+
+  button {
+    margin: 1rem;
+
+    border-radius: 21px;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  &__button {
+    margin: 2rem;
+  }
+
+  &__event {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      border-radius: 21px;
+      border: none;
+      padding: 1rem;
+    }
+  }
+}

@@ -1,12 +1,14 @@
 @import '@/shared/variables';
-@import '../../index';
 
 .chat-message {
-  width: 60%;
+  width: 200%;
+  height: 100%;
   background-color: $gray-light-color;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &__header {
     flex-shrink: 0;
@@ -34,70 +36,80 @@
   &__footer {
     flex-shrink: 0;
   }
-}
 
-.chat-message-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  background-color: $chat-message-bgcolor;
-
-  &__user-info {
+  &-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-  }
-
-  &__avatar {
-    width: 73px;
-    height: 73px;
-    border-radius: 50%;
-
-    background-color: $gray-light-color;
-  }
-
-  &__name {
-    margin-left: 25px;
-  }
-
-  &__menu-icon {
-    width: 34px;
-    height: 34px;
-  }
-}
-
-.chat-message-footer {
-  display: flex;
-  align-items: center;
-
-  padding: 1rem 1rem 1rem 2rem;
-
-  background-color: $chat-message-bgcolor;
-
-  &__icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  &__message {
-    border-color: transparent;
-    border-radius: 15px;
-    padding: 10px;
     width: 100%;
 
-    &-label {
-      width: 90%;
+    background-color: $chat-message-bgcolor;
+
+    &__user-info {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
     }
 
-    &-form {
-      width: 100%;
-      display: flex;
+    &__avatar {
+      overflow: hidden;
+      position: relative;
+      display: block;
+      width: 50px;
+      height: 50px;
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+      }
+    }
+
+    &__name {
+      margin-left: 25px;
+    }
+
+    &__menu-icon {
+      width: 34px;
+      height: 34px;
     }
   }
 
-  &__button {
-    margin-left: 3rem;
+  &-footer {
+    display: flex;
+    align-items: center;
+
+    padding: 1rem 1rem 1rem 2rem;
+
+    background-color: $chat-message-bgcolor;
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__message {
+      border-color: transparent;
+      border-radius: 15px;
+      padding: 10px;
+      width: 100%;
+
+      &-label {
+        width: 90%;
+      }
+
+      &-form {
+        width: 100%;
+        display: flex;
+      }
+    }
+
+    &__button {
+      margin-left: 3rem;
+    }
   }
 }

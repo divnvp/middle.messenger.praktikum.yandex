@@ -1,0 +1,37 @@
+@import '@/shared/variables';
+
+.chat-message-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 2rem;
+
+      &:hover {
+        background-color: #323840;
+        color: white;
+      }
+    }
+  }
+}

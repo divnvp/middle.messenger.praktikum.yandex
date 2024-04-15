@@ -1,9 +1,10 @@
 @import '@/shared/variables';
 
 .link {
+  border: none;
+  background-color: white;
   font: $font-small;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   height: 20px;
   width: 100%;

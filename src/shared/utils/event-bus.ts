@@ -1,19 +1,19 @@
-export type Listener<T extends unknown[] = never[]> = (args: T) => void;
+export type Listener = (args?: unknown) => void;
 
 export default class EventBus<
   E extends string = string,
   M extends { [K in E]: unknown[] } = Record<E, never[]>
 > {
-  private listeners: { [K in E]?: Listener<M[E]>[] } = {};
+  private listeners: Record<string, Listener[]> = {};
 
-  on(event: E, callback: Listener<M[E]>) {
+  on(event: E, callback: Listener) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
     this.listeners[event]!.push(callback);
   }
 
-  off(event: E, callback: Listener<M[E]>) {
+  off(event: E, callback: Listener) {
     if (!this.listeners[event]) {
       throw new Error(`No event: ${event}`);
     }
@@ -26,8 +26,7 @@ export default class EventBus<
     }
 
     this.listeners[event]!.forEach(listener => {
-      const newArgs = [...args] as unknown as M[E];
-      listener(newArgs);
+      listener(...args);
     });
   }
 }

@@ -1,0 +1,16 @@
+{{#if in}}
+  <div class='message-item'>
+    <div class='message-item_in'>
+      {{message}}
+      <div class='message-item_in__time'>{{time}}</div>
+    </div>
+  </div>
+
+{{else}}
+  <div class='message-item-out'>
+    <div class='message-item_out'>
+      {{message}}
+    </div>
+    <div class='message-item_out__time'>{{time}}</div>
+  </div>
+{{/if}}
