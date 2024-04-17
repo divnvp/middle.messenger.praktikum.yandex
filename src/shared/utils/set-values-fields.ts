@@ -1,8 +1,8 @@
-import { BlockOrBlockArray } from '@/shared/models/types';
-import { Indexed } from '@/shared/models/indexed.type';
-import { InputField } from '@/components/input-field';
-import isEqual from '@/shared/utils/custom-utils/is-equals';
-import { profileFields } from '@/shared/const/page-data';
+import { BlockOrBlockArray } from '../models/types';
+import { Indexed } from '../models/indexed.type';
+import { InputField } from '../../components/input-field';
+import isEqual from '../../shared/utils/custom-utils/is-equals';
+import { profileFields } from '../const/page-data';
 
 export function setValuesFields(
   children: Record<string, BlockOrBlockArray>,

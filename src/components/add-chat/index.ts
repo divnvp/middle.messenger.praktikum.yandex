@@ -1,10 +1,10 @@
 import './add-chat.scss';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import ChatController from '@/shared/controllers/chat.controller';
-import { InputField } from '@/components/input-field';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import ChatController from '../../shared/controllers/chat.controller';
+import { InputField } from '../input-field';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   input: InputField;

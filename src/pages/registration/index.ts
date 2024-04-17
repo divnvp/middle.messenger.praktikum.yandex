@@ -1,18 +1,18 @@
 import './registration.scss';
-import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
-import AuthController from '@/shared/controllers/auth.controller';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import { EventOrRecord } from '@/shared/models/types';
-import { getFormProps } from '@/shared/utils/form-props';
-import { InputField } from '@/components/input-field';
-import { IUser } from '@/shared/models/user.interface';
-import { Link } from '@/components/link';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
+import { onValidate, onValidateSubmit } from '../../shared/utils/validators/validate';
+import AuthController from '../../shared/controllers/auth.controller';
+import Block from '../../shared/utils/block';
+import { Button } from '../../components/button';
+import { EventOrRecord } from '../../shared/models/types';
+import { getFormProps } from '../../shared/utils/form-props';
+import { InputField } from '../../components/input-field';
+import { IUser } from '../../shared/models/user.interface';
+import { Link } from '../../components/link';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
 import template from './template.hbs?raw';
-import { Title } from '@/components/title';
-import { TProp } from '@/shared/models/prop.type';
+import { Title } from '../../components/title';
+import { TProp } from '../../shared/models/prop.type';
 import { v4 as uuid } from 'uuid';
 
 interface IProp extends TProp {

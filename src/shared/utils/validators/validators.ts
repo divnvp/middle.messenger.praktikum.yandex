@@ -1,4 +1,4 @@
-import { INPUT_NAMES } from '@/shared/const/input-names';
+import { INPUT_NAMES } from '../../const/input-names';
 
 export let errorMessage = '';
 

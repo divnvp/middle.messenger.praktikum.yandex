@@ -1,18 +1,18 @@
-import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import { getFormProps } from '@/shared/utils/form-props';
-import { InputField } from '@/components/input-field';
-import { IPassword } from '@/shared/models/password.interafce';
-import { IUser } from '@/shared/models/user.interface';
-import { Link } from '@/components/link';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
+import { onValidate, onValidateSubmit } from '../../shared/utils/validators/validate';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import { getFormProps } from '../../shared/utils/form-props';
+import { InputField } from '../input-field';
+import { IPassword } from '../../shared/models/password.interafce';
+import { IUser } from '../../shared/models/user.interface';
+import { Link } from '../link';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
-import UserController from '@/shared/controllers/user.controller';
-import { UserPhoto } from '@/components/user-photo';
+import { TProp } from '../../shared/models/prop.type';
+import UserController from '../../shared/controllers/user.controller';
+import { UserPhoto } from '../user-photo';
 import { v4 as uuid } from 'uuid';
 
 interface IProp extends TProp {

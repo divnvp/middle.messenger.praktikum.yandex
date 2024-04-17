@@ -1,12 +1,12 @@
-import AuthController from '@/shared/controllers/auth.controller';
-import Block from '@/shared/utils/block';
-import { Link } from '@/components/link';
-import { Menu } from '@/components/menu';
-import { ProfileFields } from '@/components/profile-fields';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
+import AuthController from '../../shared/controllers/auth.controller';
+import Block from '../../shared/utils/block';
+import { Link } from '../../components/link';
+import { Menu } from '../../components/menu';
+import { ProfileFields } from '../../components/profile-fields';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   menu: Menu;

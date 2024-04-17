@@ -1,11 +1,11 @@
-import { AuthAPI } from '@/shared/api/auth-api';
-import { IAuth } from '@/shared/models/auth.interface';
-import { isUserInSystemOrError } from '@/shared/utils/is-user-in-system-or-error';
-import { IUser } from '@/shared/models/user.interface';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
-import SocketController from '@/shared/controllers/socket.controller';
-import store from '@/shared/storage/store';
+import { AuthAPI } from '../api/auth-api';
+import { IAuth } from '../models/auth.interface';
+import { isUserInSystemOrError } from '../utils/is-user-in-system-or-error';
+import { IUser } from '../models/user.interface';
+import Router from '../router/router';
+import { Routes } from '../const/routes';
+import SocketController from '../controllers/socket.controller';
+import store from '../storage/store';
 
 class AuthController {
   private readonly authInstanceAPI = new AuthAPI();

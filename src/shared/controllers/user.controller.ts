@@ -1,9 +1,9 @@
-import { IPassword } from '@/shared/models/password.interafce';
-import { IUser } from '@/shared/models/user.interface';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
-import store from '@/shared/storage/store';
-import { UserAPI } from '@/shared/api/user-api';
+import { IPassword } from '../models/password.interafce';
+import { IUser } from '../models/user.interface';
+import Router from '../../shared/router/router';
+import { Routes } from '../const/routes';
+import store from '../../shared/storage/store';
+import { UserAPI } from '../api/user-api';
 
 class UserController {
   private readonly userInstanceAPI = new UserAPI();

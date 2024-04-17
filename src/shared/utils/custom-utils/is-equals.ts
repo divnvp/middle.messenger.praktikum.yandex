@@ -1,5 +1,5 @@
-import { isArrayOrObject } from '@/shared/utils/custom-utils/is-array-or-object';
-import { PlainObject } from '@/shared/models/plain-object.type';
+import { isArrayOrObject } from './is-array-or-object';
+import { PlainObject } from '../../models/plain-object.type';
 
 function isEqual(lhs: PlainObject, rhs: PlainObject) {
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {

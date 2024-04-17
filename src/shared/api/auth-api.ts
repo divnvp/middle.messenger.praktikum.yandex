@@ -1,7 +1,7 @@
-import { HTTPTransport } from '@/shared/services/http';
-import { IAuth } from '@/shared/models/auth.interface';
-import { IAuthApi } from '@/shared/models/api/auth-api.interface';
-import { IUser } from '@/shared/models/user.interface';
+import { HTTPTransport } from '../services/http';
+import { IAuth } from '../models/auth.interface';
+import { IAuthApi } from '../models/api/auth-api.interface';
+import { IUser } from '../models/user.interface';
 
 export class AuthAPI implements IAuthApi {
   private authAPIInstance = new HTTPTransport('/auth');

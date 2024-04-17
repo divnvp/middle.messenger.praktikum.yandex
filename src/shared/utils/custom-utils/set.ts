@@ -1,5 +1,5 @@
-import { Indexed } from '@/shared/models/indexed.type';
-import { IndexedOrUnknown } from '@/shared/models/types';
+import { Indexed } from '../../models/indexed.type';
+import { IndexedOrUnknown } from '../../models/types';
 
 function merge(lhs: Indexed, rhs: Indexed): Indexed {
   for (const p in rhs) {

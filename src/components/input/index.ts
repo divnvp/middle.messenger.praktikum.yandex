@@ -1,4 +1,4 @@
-import Block from '@/shared/utils/block';
+import Block from '../../shared/utils/block';
 import template from './template.hbs?raw';
 
 interface TProps {

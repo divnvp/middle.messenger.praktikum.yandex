@@ -1,7 +1,7 @@
-import { DocumentOrRequestBodyOrNull } from '@/shared/models/types';
-import { HOST } from '@/shared/const/api';
-import { Method } from '@/shared/const/method';
-import { queryStringify } from '@/shared/utils/query-string';
+import { DocumentOrRequestBodyOrNull } from '../models/types';
+import { HOST } from '../const/api';
+import { Method } from '../const/method';
+import { queryStringify } from '../utils/query-string';
 
 type Options = {
   method: Method;

@@ -1,4 +1,4 @@
-import { errorMessage, isValueValid } from '@/shared/utils/validators/validators';
+import { errorMessage, isValueValid } from './validators';
 
 export function onValidate(event: Event): void {
   event.preventDefault();

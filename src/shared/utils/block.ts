@@ -1,9 +1,9 @@
-import { BlockOrBlockArray } from '@/shared/models/types';
-import EventBus from '@/shared/utils/event-bus';
+import { BlockOrBlockArray } from '../models/types';
+import EventBus from '../utils/event-bus';
 import Handlebars from 'handlebars';
-import isEquals from '@/shared/utils/custom-utils/is-equals';
+import isEquals from '../utils/custom-utils/is-equals';
 import { v4 as makeUUID } from 'uuid';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../models/prop.type';
 
 class Block<P extends TProp = NonNullable<unknown>> {
   private readonly EVENTS = {

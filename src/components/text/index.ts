@@ -1,7 +1,7 @@
 import './text.scss';
-import Block from '@/shared/utils/block';
-import textTemplate from '@/components/text/template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import Block from '../../shared/utils/block';
+import textTemplate from '../../components/text/template.hbs?raw';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   text: string;

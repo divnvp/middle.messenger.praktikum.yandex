@@ -1,6 +1,6 @@
-import { isArrayOrObject } from '@/shared/utils/custom-utils/is-array-or-object';
-import { isPlainObject } from '@/shared/utils/custom-utils/is-plain-object';
-import { PlainObjectOrArray } from '@/shared/models/types';
+import { isArrayOrObject } from './custom-utils/is-array-or-object';
+import { isPlainObject } from './custom-utils/is-plain-object';
+import { PlainObjectOrArray } from '../models/types';
 
 export function queryStringify(data: Record<string, unknown>) {
   if (!isPlainObject(data)) {

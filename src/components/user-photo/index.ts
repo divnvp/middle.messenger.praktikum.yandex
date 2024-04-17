@@ -1,12 +1,12 @@
 import './style.scss';
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { ChangeAvatar } from '@/components/change-avatar';
-import { InputField } from '@/components/input-field';
-import { IUser } from '@/shared/models/user.interface';
-import { readFile } from '@/shared/utils/file-reader';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { ChangeAvatar } from '../change-avatar';
+import { InputField } from '../input-field';
+import { IUser } from '../../shared/models/user.interface';
+import { readFile } from '../../shared/utils/file-reader';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   user?: IUser;

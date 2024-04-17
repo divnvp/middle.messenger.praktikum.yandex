@@ -1,4 +1,4 @@
-import { IUser } from '@/shared/models/user.interface';
+import { IUser } from './user.interface';
 
 export interface IChat {
   id: number;

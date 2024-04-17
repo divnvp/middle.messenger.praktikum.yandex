@@ -1,7 +1,7 @@
-import Block from '@/shared/utils/block';
-import Route from '@/shared/router/route';
-import { RouteOrNull } from '@/shared/models/types';
-import { Routes } from '@/shared/const/routes';
+import Block from '../utils/block';
+import Route from './route';
+import { RouteOrNull } from '../models/types';
+import { Routes } from '../const/routes';
 
 const APP_QUERY = '#app';
 

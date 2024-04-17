@@ -1,17 +1,17 @@
-import store, { StoreEvents } from '@/shared/storage/store';
-import AuthController from '@/shared/controllers/auth.controller';
-import Block from '@/shared/utils/block';
-import { InputField } from '@/components/input-field';
-import { IState } from '@/shared/models/state.interface';
-import { IUser } from '@/shared/models/user.interface';
-import { Link } from '@/components/link';
-import { profileFields } from '@/shared/const/page-data';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
-import { setValuesFields } from '@/shared/utils/set-values-fields';
+import store, { StoreEvents } from '../../shared/storage/store';
+import AuthController from '../../shared/controllers/auth.controller';
+import Block from '../../shared/utils/block';
+import { InputField } from '../input-field';
+import { IState } from '../../shared/models/state.interface';
+import { IUser } from '../../shared/models/user.interface';
+import { Link } from '../link';
+import { profileFields } from '../../shared/const/page-data';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
+import { setValuesFields } from '../../shared/utils/set-values-fields';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
-import { UserPhoto } from '@/components/user-photo';
+import { TProp } from '../../shared/models/prop.type';
+import { UserPhoto } from '../user-photo';
 
 interface IProp extends TProp, Partial<IState> {
   events?: IEvents;

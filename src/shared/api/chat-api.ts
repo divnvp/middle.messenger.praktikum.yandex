@@ -1,5 +1,5 @@
-import { HTTPTransport } from '@/shared/services/http';
-import { IChatApi } from '@/shared/models/api/chat-api.interface';
+import { HTTPTransport } from '../services/http';
+import { IChatApi } from '../models/api/chat-api.interface';
 
 export class ChatsAPI implements IChatApi {
   private chatAPIInstance = new HTTPTransport('/chats');

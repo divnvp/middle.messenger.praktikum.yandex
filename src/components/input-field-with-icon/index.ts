@@ -1,5 +1,5 @@
-import Block from '@/shared/utils/block';
-import inputWithIconFieldTemplate from '@/components/input-field-with-icon/template.hbs?raw';
+import Block from '../../shared/utils/block';
+import inputWithIconFieldTemplate from '../../components/input-field-with-icon/template.hbs?raw';
 
 interface IProps {
   id: string;

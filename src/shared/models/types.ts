@@ -1,8 +1,8 @@
-import Block from '@/shared/utils/block';
-import { IMessage } from '@/shared/models/message.interface';
-import { Indexed } from '@/shared/models/indexed.type';
-import { PlainObject } from '@/shared/models/plain-object.type';
-import Route from '@/shared/router/route';
+import Block from '../utils/block';
+import { IMessage } from './message.interface';
+import { Indexed } from './indexed.type';
+import { PlainObject } from './plain-object.type';
+import Route from '../router/route';
 
 export type EventOrRecord<T> = T | Record<string, () => void>;
 export type BlockOrBlockArray = Block | Block[];
