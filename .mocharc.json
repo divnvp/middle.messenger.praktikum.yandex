@@ -2,5 +2,9 @@
   "extension": ["ts"],
   "loader": "ts-node/esm",
   "spec": ["src/**/*.spec.ts"],
-  "require": ["./mocha-config.mjs"]
+  "require": "./mocha-config.mjs",
+  "node-option": [
+    "loader=ts-node/esm",
+    "experimental-specifier-resolution=node"
+  ]
 }
