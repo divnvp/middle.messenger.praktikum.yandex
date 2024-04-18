@@ -8,10 +8,6 @@ describe('Роутер', () => {
     getContent = sinon.fake(() => document.createElement('div'));
   } as unknown as typeof Block;
 
-  afterEach(() => {
-    sinon.restore();
-  });
-
   it('Проверяем создание корректного инстанса роута', () => {
     const routerInstance = Router.use('/', mock);
     expect(routerInstance).to.eq(Router);
