@@ -17,7 +17,7 @@ class Block<P extends TProp = NonNullable<unknown>> {
   private readonly id = makeUUID();
   private htmlElement?: HTMLElement;
 
-  protected props: P;
+  props: P;
   child: Record<string, BlockOrBlockArray>;
 
   get element() {
@@ -47,7 +47,7 @@ class Block<P extends TProp = NonNullable<unknown>> {
     this.dispatchForEachChild();
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  componentDidUpdate(oldProps: P, newProps: P) {
     return !isEquals(oldProps, newProps);
   }
 
