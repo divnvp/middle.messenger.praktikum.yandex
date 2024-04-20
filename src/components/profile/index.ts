@@ -72,7 +72,7 @@ export default class Profile extends Block<IProp> {
     );
   }
 
-  protected override componentDidUpdate(oldProps: IProp, newProps: IProp): boolean {
+  override componentDidUpdate(oldProps: IProp, newProps: IProp): boolean {
     setValuesFields(this.child, oldProps, newProps);
 
     return true;
