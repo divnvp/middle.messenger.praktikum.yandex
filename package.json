@@ -12,7 +12,7 @@
     "start": "vite build && node server.js",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",
-    "prepare": "husky",
+    "prepare": "husky install",
     "test": "mocha"
   },
   "devDependencies": {
