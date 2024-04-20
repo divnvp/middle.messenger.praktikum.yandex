@@ -1,11 +1,11 @@
 import { JSDOM } from 'jsdom';
-import Sinon from 'sinon';
+import sinon from 'sinon';
 
 const jsDOM = new JSDOM('<main></main>', {
   url: 'http://localhost:3000'
 });
 
-global.XMLHttpRequest = Sinon.useFakeXMLHttpRequest();
+global.XMLHttpRequest = sinon.useFakeXMLHttpRequest();
 
 global.window = jsDOM.window;
 global.DocumentFragment = jsDOM.window.DocumentFragment;
