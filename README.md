@@ -16,7 +16,7 @@
 
 Запустить проект на localhost: `npm run start`
 
-Проверить качество кода: `npm run lint`
+Проверить качество кода: `npm run test`
 
 ## Ссылки:
 
@@ -78,3 +78,7 @@ https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/5
 ## Ссылка на pull-request Спринт 3
 
 https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/6
+
+## Ссылка на pull-request Спринт 4
+
+https://github.com/divnvp/middle.messenger.praktikum.yandex/pull/7
