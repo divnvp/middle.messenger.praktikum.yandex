@@ -5,15 +5,6 @@
     "browser": true
   },
   "plugins": ["@typescript-eslint", "import"],
-  "globals": {
-    "global": true,
-    "describe": true,
-    "it": true,
-    "beforeEach": true,
-    "afterEach": true,
-    "expect": true,
-    "test": true
-  },
   "ignorePatterns": ["./.eslintignore"],
   "overrides": [
     {
