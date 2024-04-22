@@ -1,8 +1,9 @@
-import { GET_OLD_TYPE, SocketEvents } from '@/shared/const/socket-events.enum';
-import { IMessage } from '@/shared/models/message.interface';
-import Socket from '@/shared/utils/socket';
-import store from '@/shared/storage/store';
-import { WS_HOST } from '@/shared/const/api';
+import { GET_OLD_TYPE, SocketEvents } from '../const/socket-events.enum';
+import { IMessage } from '../models/message.interface';
+import { MessageOrArray } from '../models/types';
+import Socket from '../../shared/utils/socket';
+import store from '../../shared/storage/store';
+import { WS_HOST } from '../const/api';
 
 class SocketController {
   private clients: { chatId: number; socket: Socket }[] = [];
@@ -53,7 +54,7 @@ class SocketController {
     }
   }
 
-  private setMessages(chatId: number, dialog: IMessage | []) {
+  private setMessages(chatId: number, dialog: MessageOrArray) {
     const oldMessages = store.getState().dialogs?.[chatId] || [];
     let newMessages: IMessage[] = [];
 

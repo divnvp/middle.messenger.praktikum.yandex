@@ -1,8 +1,9 @@
-import EventBus from '@/shared/utils/event-bus';
+import { BlockOrBlockArray } from '../models/types';
+import EventBus from '../utils/event-bus';
 import Handlebars from 'handlebars';
-import isEquals from '@/shared/utils/custom-utils/is-equals';
+import isEquals from '../utils/custom-utils/is-equals';
 import { v4 as makeUUID } from 'uuid';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../models/prop.type';
 
 class Block<P extends TProp = NonNullable<unknown>> {
   private readonly EVENTS = {
@@ -16,8 +17,8 @@ class Block<P extends TProp = NonNullable<unknown>> {
   private readonly id = makeUUID();
   private htmlElement?: HTMLElement;
 
-  protected props: P;
-  child: Record<string, Block | Block[]>;
+  props: P;
+  child: Record<string, BlockOrBlockArray>;
 
   get element() {
     return this.htmlElement;
@@ -46,7 +47,7 @@ class Block<P extends TProp = NonNullable<unknown>> {
     this.dispatchForEachChild();
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  componentDidUpdate(oldProps: P, newProps: P) {
     return !isEquals(oldProps, newProps);
   }
 
@@ -123,10 +124,10 @@ class Block<P extends TProp = NonNullable<unknown>> {
 
   private getChildrenAndProps(childrenAndProps: P): {
     props: P;
-    child: Record<string, Block | Block[]>;
+    child: Record<string, BlockOrBlockArray>;
   } {
     const props: Record<string, unknown> = {};
-    const child: Record<string, Block | Block[]> = {};
+    const child: Record<string, BlockOrBlockArray> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (Array.isArray(value) && value.length && value.every(v => v instanceof Block)) {

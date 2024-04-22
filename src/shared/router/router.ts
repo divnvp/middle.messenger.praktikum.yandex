@@ -1,13 +1,14 @@
-import Block from '@/shared/utils/block';
-import Route from '@/shared/router/route';
-import { Routes } from '@/shared/const/routes';
+import Block from '../utils/block';
+import Route from './route';
+import { RouteOrNull } from '../models/types';
+import { Routes } from '../const/routes';
 
 const APP_QUERY = '#app';
 
 class Router {
-  private static __instance: Router;
+  private static __instance: Router | null;
 
-  private _currentRoute: Route | null = null;
+  private _currentRoute: RouteOrNull = null;
   private routes: Route[] = [];
   private history = window.history;
 

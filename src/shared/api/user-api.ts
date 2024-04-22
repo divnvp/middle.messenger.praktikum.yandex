@@ -1,7 +1,7 @@
-import { HTTPTransport } from '@/shared/services/http';
-import { IPassword } from '@/shared/models/password.interafce';
-import { IUser } from '@/shared/models/user.interface';
-import { IUserApi } from '@/shared/models/api/user-api.interface';
+import { HTTPTransport } from '../services/http';
+import { IPassword } from '../models/password.interafce';
+import { IUser } from '../models/user.interface';
+import { IUserApi } from '../models/api/user-api.interface';
 
 export class UserAPI implements IUserApi {
   private chatAPIInstance = new HTTPTransport('/user');

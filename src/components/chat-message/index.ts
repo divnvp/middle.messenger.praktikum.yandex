@@ -1,21 +1,21 @@
 import './chat-message.scss';
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import { ChangeAvatar } from '@/components/change-avatar';
-import { formatTime } from '@/shared/utils/custom-utils/format-time';
-import { IChat } from '@/shared/models/chat.interface';
-import { IMessage } from '@/shared/models/message.interface';
-import { InputField } from '@/components/input-field';
-import { IState } from '@/shared/models/state.interface';
-import { MessageInOut } from '@/components/message-in-out';
-import { Modal } from '@/components/modal';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
-import SocketController from '@/shared/controllers/socket.controller';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import { ChangeAvatar } from '../change-avatar';
+import { formatTime } from '../../shared/utils/custom-utils/format-time';
+import { IChat } from '../../shared/models/chat.interface';
+import { IMessage } from '../../shared/models/message.interface';
+import { InputField } from '../input-field';
+import { IState } from '../../shared/models/state.interface';
+import { MessageInOut } from '../message-in-out';
+import { Modal } from '../modal';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
+import SocketController from '../../shared/controllers/socket.controller';
 import template from './template.hbs?raw';
-import { Text } from '@/components/text';
-import { TProp } from '@/shared/models/prop.type';
+import { Text } from '../text';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp, IState {
   currentChat: IChat;

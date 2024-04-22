@@ -1,5 +1,5 @@
-import { IAuth } from '@/shared/models/auth.interface';
-import { IUser } from '@/shared/models/user.interface';
+import { IAuth } from '../auth.interface';
+import { IUser } from '../user.interface';
 
 export interface IAuthApi {
   create: (data: IUser) => Promise<XMLHttpRequest>;

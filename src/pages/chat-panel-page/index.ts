@@ -1,15 +1,15 @@
-import AuthController from '@/shared/controllers/auth.controller';
-import Block from '@/shared/utils/block';
-import ChatController from '@/shared/controllers/chat.controller';
-import { ChatList } from '@/components/chat-list';
-import ChatMessagePanel from '@/components/chat-panel';
-import { connect } from '@/shared/utils/connect';
-import { IChat } from '@/shared/models/chat.interface';
-import { IUser } from '@/shared/models/user.interface';
-import { Menu } from '@/components/menu';
-import store from '@/shared/storage/store';
+import AuthController from '../../shared/controllers/auth.controller';
+import Block from '../../shared/utils/block';
+import ChatController from '../../shared/controllers/chat.controller';
+import { ChatList } from '../../components/chat-list';
+import ChatMessagePanel from '../../components/chat-panel';
+import { connect } from '../../shared/utils/connect';
+import { IChat } from '../../shared/models/chat.interface';
+import { IUser } from '../../shared/models/user.interface';
+import { Menu } from '../../components/menu';
+import store from '../../shared/storage/store';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProp extends TProp {
   user: IUser;

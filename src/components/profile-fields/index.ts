@@ -1,16 +1,16 @@
-import { onValidate, onValidateSubmit } from '@/shared/utils/validators/validate';
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import { getFormProps } from '@/shared/utils/form-props';
-import { InputField } from '@/components/input-field';
-import { IUser } from '@/shared/models/user.interface';
-import { profileFields } from '@/shared/const/page-data';
-import { setValuesFields } from '@/shared/utils/set-values-fields';
+import { onValidate, onValidateSubmit } from '../../shared/utils/validators/validate';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import { getFormProps } from '../../shared/utils/form-props';
+import { InputField } from '../input-field';
+import { IUser } from '../../shared/models/user.interface';
+import { profileFields } from '../../shared/const/page-data';
+import { setValuesFields } from '../../shared/utils/set-values-fields';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
-import UserController from '@/shared/controllers/user.controller';
-import { UserPhoto } from '@/components/user-photo';
+import { TProp } from '../../shared/models/prop.type';
+import UserController from '../../shared/controllers/user.controller';
+import { UserPhoto } from '../user-photo';
 
 interface IProps extends TProp {
   user: IUser;

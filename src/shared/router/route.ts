@@ -1,12 +1,13 @@
-import Block from '@/shared/utils/block';
-import isEquals from '@/shared/utils/custom-utils/is-equals';
-import { PlainObject } from '@/shared/models/plain-object.type';
+import Block from '../utils/block';
+import { BlockOrNull } from '../models/types';
+import isEquals from '../utils/custom-utils/is-equals';
+import { PlainObject } from '../models/plain-object.type';
 
 class Route {
   private readonly blockClass!: typeof Block;
   private pathName?: string;
   private readonly query!: string;
-  private block: Block | null = null;
+  private block: BlockOrNull = null;
 
   constructor(pathName: string, componentClass: typeof Block, query: string) {
     this.pathName = pathName;

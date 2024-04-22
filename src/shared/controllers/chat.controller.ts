@@ -1,7 +1,7 @@
-import { ChatsAPI } from '@/shared/api/chat-api';
-import { IChat } from '@/shared/models/chat.interface';
-import SocketController from '@/shared/controllers/socket.controller';
-import store from '@/shared/storage/store';
+import { ChatsAPI } from '../api/chat-api';
+import { IChat } from '../models/chat.interface';
+import SocketController from '../controllers/socket.controller';
+import store from '../storage/store';
 
 class ChatsController {
   private readonly chatsInstanceAPI = new ChatsAPI();

@@ -1,13 +1,13 @@
 import './modal.scss';
-import store, { StoreEvents } from '@/shared/storage/store';
-import { AddUser } from '@/components/add-user';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import ChatController from '@/shared/controllers/chat.controller';
-import { DeleteChat } from '@/components/delete-chat';
-import { RemoveUser } from '@/components/remove-user';
+import store, { StoreEvents } from '../../shared/storage/store';
+import { AddUser } from '../add-user';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import ChatController from '../../shared/controllers/chat.controller';
+import { DeleteChat } from '../delete-chat';
+import { RemoveUser } from '../remove-user';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   isOpened?: boolean;

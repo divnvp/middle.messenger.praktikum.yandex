@@ -1,8 +1,8 @@
-import EventBus from '@/shared/utils/event-bus';
-import { IChat } from '@/shared/models/chat.interface';
-import { IState } from '@/shared/models/state.interface';
-import { IUser } from '@/shared/models/user.interface';
-import set from '@/shared/utils/custom-utils/set';
+import EventBus from '../utils/event-bus';
+import { IChat } from '../models/chat.interface';
+import { IState } from '../models/state.interface';
+import { IUser } from '../models/user.interface';
+import set from '../utils/custom-utils/set';
 
 export enum StoreEvents {
   Updated = 'updated'

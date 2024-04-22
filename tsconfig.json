@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "allowJs": true,
     "baseUrl": "./",
@@ -25,9 +26,6 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "skipLibCheck": true,
-    "lib": ["ES2022", "dom"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "lib": ["ES2022", "dom"]
   }
 }

@@ -1,11 +1,10 @@
-import './menu.scss';
-import Block from '@/shared/utils/block';
-import { MenuButton } from '@/components/menu-item';
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
+import Block from '../../shared/utils/block';
+import { MenuButton } from '../menu-item';
+import Router from '../../shared/router/router';
+import { Routes } from '../../shared/const/routes';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
-import { UserPhoto } from '@/components/user-photo';
+import { TProp } from '../../shared/models/prop.type';
+import { UserPhoto } from '../user-photo';
 
 interface IProps extends TProp {
   userPhoto: UserPhoto;

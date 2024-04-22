@@ -1,5 +1,5 @@
-import { appendToForm } from '@/shared/utils/custom-utils/append-to-form';
-import UserController from '@/shared/controllers/user.controller';
+import { appendToForm } from './custom-utils/append-to-form';
+import UserController from '../../shared/controllers/user.controller';
 
 export function readFile(element: HTMLInputElement) {
   const newFile = element.files![0];

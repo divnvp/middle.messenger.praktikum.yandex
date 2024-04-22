@@ -1,10 +1,10 @@
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { ChatItem } from '@/components/chat-item';
-import { IChat } from '@/shared/models/chat.interface';
-import { InputSearch } from '@/components/input-search';
-import { IState } from '@/shared/models/state.interface';
-import { Menu } from '@/components/menu';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { ChatItem } from '../chat-item';
+import { IChat } from '../../shared/models/chat.interface';
+import { InputSearch } from '../input-search';
+import { IState } from '../../shared/models/state.interface';
+import { Menu } from '../menu';
 import template from './template.hbs?raw';
 
 interface TProps {

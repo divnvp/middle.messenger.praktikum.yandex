@@ -1,5 +1,5 @@
-import { IPassword } from '@/shared/models/password.interafce';
-import { IUser } from '@/shared/models/user.interface';
+import { IPassword } from '../password.interafce';
+import { IUser } from '../user.interface';
 
 export interface IUserApi {
   update: (data: IUser) => Promise<XMLHttpRequest>;

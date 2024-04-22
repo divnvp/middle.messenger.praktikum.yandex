@@ -1,5 +1,5 @@
-import { SocketEvents, SocketHeartbeatEnum } from '@/shared/const/socket-events.enum';
-import EventBus from '@/shared/utils/event-bus';
+import { SocketEvents, SocketHeartbeatEnum } from '../const/socket-events.enum';
+import EventBus from '../../shared/utils/event-bus';
 
 export default class Socket extends EventBus {
   private interval: number = 0;

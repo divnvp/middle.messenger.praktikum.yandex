@@ -1,9 +1,9 @@
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import { InputField } from '@/components/input-field';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import { InputField } from '../input-field';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProp extends TProp {
   onClick?: (e: Event) => void;

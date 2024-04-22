@@ -1,9 +1,9 @@
-import AuthController from '@/shared/controllers/auth.controller';
-import Block from '@/shared/utils/block';
-import { Menu } from '@/components/menu';
-import Profile from '@/components/profile';
+import AuthController from '../../shared/controllers/auth.controller';
+import Block from '../../shared/utils/block';
+import { Menu } from '../../components/menu';
+import Profile from '../../components/profile';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   menu: Menu;

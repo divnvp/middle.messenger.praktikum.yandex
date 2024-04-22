@@ -1,7 +1,7 @@
 import './link.scss';
-import Block from '@/shared/utils/block';
+import Block from '../../shared/utils/block';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   url?: string;

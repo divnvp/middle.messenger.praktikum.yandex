@@ -1,6 +1,6 @@
-import Router from '@/shared/router/router';
-import { Routes } from '@/shared/const/routes';
-import { SysError } from '@/shared/const/errors';
+import Router from '../../shared/router/router';
+import { Routes } from '../const/routes';
+import { SysError } from '../const/errors';
 
 export function isUserInSystemOrError(e: unknown) {
   if (e == SysError.UserIsAlreadyInSystem) {

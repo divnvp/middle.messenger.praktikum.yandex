@@ -1,9 +1,9 @@
-import Block from '@/shared/utils/block';
-import { Button } from '@/components/button';
-import ChatController from '@/shared/controllers/chat.controller';
-import store from '@/shared/storage/store';
+import Block from '../../shared/utils/block';
+import { Button } from '../button';
+import ChatController from '../../shared/controllers/chat.controller';
+import store from '../../shared/storage/store';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProp extends TProp {
   onClick?: (e: Event) => void;

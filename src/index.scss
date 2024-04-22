@@ -1,4 +1,4 @@
-@import '@/shared/variables';
+@import './shared/variables';
 
 html,
 body {
@@ -377,5 +377,27 @@ button {
     justify-content: space-between;
 
     margin-top: 2rem;
+  }
+}
+
+.menu_el {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 100px;
+
+  &:hover {
+    background-color: $button-bgcolor;
+    color: $text-bgcolor;
+    border-radius: 21px;
+    cursor: pointer;
+
+    button {
+      background-color: $button-bgcolor;
+      color: $text-bgcolor;
+    }
   }
 }

@@ -1,12 +1,12 @@
 import './style.scss';
-import store, { StoreEvents } from '@/shared/storage/store';
-import Block from '@/shared/utils/block';
-import { ChangeAvatar } from '@/components/change-avatar';
-import { InputField } from '@/components/input-field';
-import { IUser } from '@/shared/models/user.interface';
-import { readFile } from '@/shared/utils/file-reader';
+import store, { StoreEvents } from '../../shared/storage/store';
+import Block from '../../shared/utils/block';
+import { ChangeAvatar } from '../change-avatar';
+import { InputField } from '../input-field';
+import { IUser } from '../../shared/models/user.interface';
+import { readFile } from '../../shared/utils/file-reader';
 import template from './template.hbs?raw';
-import { TProp } from '@/shared/models/prop.type';
+import { TProp } from '../../shared/models/prop.type';
 
 interface IProps extends TProp {
   user?: IUser;
@@ -29,7 +29,7 @@ export class UserPhoto extends Block<IProps> {
 
   override init() {
     this.child['changeAvatar'] = new ChangeAvatar({
-      photoUrl: (this.props as { user: { avatar: string | undefined } }).user?.avatar ?? undefined
+      photoUrl: (this.props as { user: { avatar?: string } }).user?.avatar ?? undefined
     });
 
     this.child['input'] = new InputField({
@@ -47,7 +47,7 @@ export class UserPhoto extends Block<IProps> {
 
   override componentDidUpdate(): boolean {
     this.child['changeAvatar'] = new ChangeAvatar({
-      photoUrl: (this.props as { user: { avatar: string | undefined } }).user?.avatar ?? undefined
+      photoUrl: (this.props as { user: { avatar?: string } }).user?.avatar ?? undefined
     });
     return true;
   }
